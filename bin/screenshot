@@ -10,30 +10,34 @@
 #   Dependencies
 # -------------------------------------
 
-require 'net/http'
 require 'json'
+require 'net/http'
+require 'slugify'
 
 # -------------------------------------
 #   Config
 # -------------------------------------
 
-url = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Title'
+#data = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Title'
+data = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/demo?api_key=key3GGb7zxleGAfHl&sortField=Title'
 
 # -------------------------------------
 #   Main
 # -------------------------------------
 
-# ----- Get JSON ----- #
+# ----- JSON ----- #
 
-uri = URI(url)
-response = Net::HTTP.get(uri)
-sites = JSON.parse(response)['records']
+response = Net::HTTP.get(URI(data))
+sites    = JSON.parse(response)['records']
 
 # ----- Do the Thing ----- #
 
 for site in sites do
-  #system "webkit2png --width=1100 --fullsize --dir=screenshots --filename #{site[:slug]} #{site[:url]}"
-  #system "mv screenshots/#{site[:slug]}-full.png screenshots/#{site[:slug]}.png"
-  puts site['fields']['Title']
-  puts site['fields']['URL']
+  slug = site['fields']['Title'].slugify
+  url  = site['fields']['URL']
+
+  puts "Capturing #{site['fields']['Title']}"
+
+  system "webkit2png --width=1100 --fullsize --ignore-ssl-check --dir=screenshots --filename #{slug} #{url}"
+  system "mv screenshots/#{slug}-full.png screenshots/#{slug}.png"
 end
