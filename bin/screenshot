@@ -18,8 +18,8 @@ require 'slugify'
 #   Config
 # -------------------------------------
 
-#data = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Title'
-data = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/demo?api_key=key3GGb7zxleGAfHl&sortField=Title'
+data = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Title'
+#data = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/demo?api_key=key3GGb7zxleGAfHl&sortField=Title'
 
 # -------------------------------------
 #   Main
@@ -40,4 +40,8 @@ for site in sites do
 
   system "webkit2png --width=1100 --fullsize --ignore-ssl-check --dir=screenshots --filename #{slug} #{url}"
   system "mv screenshots/#{slug}-full.png screenshots/#{slug}.png"
+  system "convert screenshots/#{slug}.png -crop 2200x1650+0+0 screenshots/#{slug}-cropped.png"
+  system "convert -resize 600 screenshots/#{slug}-cropped.png TGA:- | cjpeg -quality 60 -outfile screenshots/#{slug}-thumb.jpg -targa -optimize"
+  system "/Applications/ImageOptim.app/Contents/MacOS/ImageOptim screenshots/#{slug}-thumb.jpg"
+
 end
