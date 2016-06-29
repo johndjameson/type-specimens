@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+# *************************************
+#
+#   Screenshot
+#   -> Capture website images
+#
+# *************************************
+
+# -------------------------------------
+#   Dependencies
+# -------------------------------------
+
+require 'net/http'
+require 'json'
+
+# -------------------------------------
+#   Config
+# -------------------------------------
+
+url = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Title'
+
+# -------------------------------------
+#   Main
+# -------------------------------------
+
+# ----- Get JSON ----- #
+
+uri = URI(url)
+response = Net::HTTP.get(uri)
+sites = JSON.parse(response)['records']
+
+# ----- Do the Thing ----- #
+
+for site in sites do
+  #system "webkit2png --width=1100 --fullsize --dir=screenshots --filename #{site[:slug]} #{site[:url]}"
+  #system "mv screenshots/#{site[:slug]}-full.png screenshots/#{site[:slug]}.png"
+  puts site['fields']['Title']
+  puts site['fields']['URL']
+end
