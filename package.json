@@ -1,0 +1,19 @@
+{
+  "name": "type-specimens",
+  "version": "1.0.0",
+  "description": "Type Specimens ==============",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johndjameson/type-specimens.git"
+  },
+  "author": "John D. Jameson",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/johndjameson/type-specimens/issues"
+  },
+  "homepage": "https://github.com/johndjameson/type-specimens#readme"
+}
