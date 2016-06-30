@@ -6,32 +6,13 @@
 #
 # *************************************
 
-# -------------------------------------
-#   Dependencies
-# -------------------------------------
-
-require 'json'
-require 'net/http'
-require 'slugify'
-
-# -------------------------------------
-#   Config
-# -------------------------------------
-
-data = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Title'
+require_relative '_shared'
 
 # -------------------------------------
 #   Main
 # -------------------------------------
 
-# ----- JSON ----- #
-
-response = Net::HTTP.get(URI(data))
-sites    = JSON.parse(response)['records']
-
-# ----- Do the Thing ----- #
-
-for site in sites do
+for site in $sites do
   slug = site['fields']['Title'].slugify
   url  = site['fields']['URL']
 
