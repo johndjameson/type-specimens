@@ -20,7 +20,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <p>Hello</p>
+      <Header/>
+    )
+  }
+
+}
+
+class Header extends React.Component {
+
+  render() {
+    return (
+      <header>
+        <img src='https://placehold.it/480x200'/>
+      </header>
     )
   }
 
