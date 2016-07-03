@@ -180,7 +180,6 @@ gulp.task( 'browserify', function() {
     .pipe( plugins.browserify( {
       transform: [ 'babelify', 'reactify' ]
     } ) )
-    .pipe( plugins.uglify() )
     .pipe( plugins.concat( options.browserify.outputFile ) )
     .pipe( gulp.dest( options.browserify.destination ) )
     .pipe( plugins.connect.reload() );
