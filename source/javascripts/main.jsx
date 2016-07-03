@@ -10,13 +10,24 @@
 // -------------------------------------
 
 import React from 'react';
-import App from './components/app'
+import ReactDOM from 'react-dom';
 
 // -------------------------------------
 //   Base
 // -------------------------------------
 
-React.render(
-  <App />,
-  document.getElementById( 'js-app' )
-);
+class App extends React.Component {
+
+  render() {
+    return (
+      <p>Hello</p>
+    )
+  }
+
+}
+
+ReactDOM.render((
+    <App />
+  ),
+  document.querySelector( '#js-app' )
+)
