@@ -1,8 +1,11 @@
 {
-  "name": "type-specimens",
-  "version": "0.1.0",
   "author": "John D. Jameson",
   "homepage": "https://type-specimens.io/",
+  "license": "UNLICENSED",
+  "name": "type-specimens",
+  "private": true,
+  "repository": "johndjameson/type-specimens",
+  "version": "0.1.0",
   "devDependencies": {
     "babelify": "^6.1.2",
     "browserify": "^10.2.3",
