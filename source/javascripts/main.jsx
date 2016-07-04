@@ -11,6 +11,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Router, Route, Link, browserHistory } from 'react-router'
 
 // -------------------------------------
 //   Base
@@ -83,6 +84,12 @@ class CollectionItem extends React.Component {
 
 }
 
+let routes = (
+  <Router history={browserHistory}>
+    <Route path='/' component={App}/>
+  </Router>
+)
+
 var request = new XMLHttpRequest();
 var data;
 request.open('GET', 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=keyNzlXjAWOzfVKzD&sortField=Title', true);
@@ -90,7 +97,7 @@ request.open('GET', 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api
 request.onload = function() {
   if (this.status >= 200 && this.status < 400) {
     data = JSON.parse(this.response).records;
-    ReactDOM.render( ( <App /> ), document.querySelector( '#js-app' ) )
+    ReactDOM.render( routes, document.querySelector( '#js-app' ) )
   } else {
     // We reached our target server, but it returned an error
 
