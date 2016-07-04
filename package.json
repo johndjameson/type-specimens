@@ -26,6 +26,7 @@
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.5",
     "gulp-watch": "^4.2.4",
+    "history": "^3.0.0",
     "node-sass": "^3.1.2",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
