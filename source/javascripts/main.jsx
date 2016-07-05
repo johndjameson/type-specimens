@@ -97,7 +97,7 @@ class CollectionItem extends React.Component {
   render() {
     return (
       <div className='collection-item'>
-        <div className='thumbnail mb05'>
+        <div className='thumbnail'>
           <a href={this.props.url}>
             <img className='thumbnail-media' src={this.props.imageSrc} alt={this.props.title} />
           </a>
