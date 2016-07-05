@@ -66,7 +66,7 @@ var options = {
   // ----- Build ----- //
 
   build : {
-    tasks       : [ 'minify:css', 'browserify', 'html' ],
+    tasks       : [ 'minify:css', 'browserify', 'html', 'images' ],
     destination : 'build/'
   },
 
@@ -106,7 +106,7 @@ var options = {
   // ----- Images ----- //
 
   images : {
-    files       : 'source/images',
+    files       : 'source/images/**/*',
     destination : 'build/images'
   },
 
