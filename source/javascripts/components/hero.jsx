@@ -24,7 +24,7 @@ export default class extends React.Component {
     return (
       <header className='hero'>
         <div className='row'>
-          <InlineSvg src='/images/logo.svg'/>
+          <InlineSvg src='/images/logo.svg' width={593}/>
         </div>
       </header>
     )
