@@ -13,8 +13,6 @@
 //   `gulp html`
 //   `gulp images`
 //   `gulp minify:css`
-//   `gulp test:css`
-//   `gulp test:js`
 //   `gulp watch`
 //
 // *************************************
@@ -29,11 +27,8 @@
 // gulp-autoprefixer : Prefix CSS
 // gulp-concat       : Concatenate files
 // gulp-connect      : Gulp plugin to run a webserver (with LiveReload)
-// gulp-csscss       : CSS redundancy analyzer
-// gulp-jshint       : JavaScript code quality tool
 // gulp-load-plugins : Automatically load Gulp plugins
 // gulp-minify-css   : Minify CSS
-// gulp-parker       : Stylesheet analysis tool
 // gulp-plumber      : Prevent pipe breaking from errors
 // gulp-rename       : Rename files
 // gulp-sass         : Compile Sass
@@ -257,35 +252,6 @@ gulp.task( 'minify:css', function () {
     .pipe( plugins.connect.reload() );
 
 } );
-
-// -------------------------------------
-//   Task: Test: CSS
-// -------------------------------------
-
-gulp.task( 'test:css', function() {
-
-  gulp.src( options.css.file )
-    .pipe( plugins.plumber() )
-    .pipe( plugins.parker() )
-
-  gulp.src( options.css.file )
-    .pipe( plugins.plumber() )
-    .pipe( plugins.csscss() )
-
-});
-
-// -------------------------------------
-//   Task: Test: JS
-// -------------------------------------
-
-gulp.task( 'test:js', function() {
-
-  gulp.src( options.js.file )
-    .pipe( plugins.plumber() )
-    .pipe( plugins.jshint() )
-    .pipe( plugins.jshint.reporter( 'default' ) )
-
-});
 
 // -------------------------------------
 //   Task: Watch
