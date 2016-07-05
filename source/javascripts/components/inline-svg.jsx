@@ -40,7 +40,11 @@ export default class extends React.Component {
 
   render() {
     return (
-      <svg viewBox={this.state.viewBox} dangerouslySetInnerHTML={createMarkup(this.state.markup)}/>
+      <svg
+        dangerouslySetInnerHTML={createMarkup(this.state.markup)}
+        viewBox={this.state.viewBox}
+        {...this.props}
+      />
     )
   }
 
