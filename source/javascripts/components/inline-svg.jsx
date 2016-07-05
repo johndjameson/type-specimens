@@ -11,6 +11,10 @@
 
 import React from 'react'
 
+// ----- Helpers ----- //
+
+import { createMarkup, parseSvg } from '../helpers.jsx'
+
 // -------------------------------------
 //   Component
 // -------------------------------------
@@ -36,27 +40,8 @@ export default class extends React.Component {
 
   render() {
     return (
-      <svg viewBox={this.state.viewBox} dangerouslySetInnerHTML={this._createMarkup()}/>
+      <svg viewBox={this.state.viewBox} dangerouslySetInnerHTML={createMarkup(this.state.markup)}/>
     )
-  }
-
-  // ----- Create Markup ----- //
-
-  _createMarkup() {
-    return { __html: this.state.markup }
-  }
-
-  // ----- Parse SVG ----- //
-
-  _parseSvg(svg) {
-    let parser = new DOMParser()
-
-    let element = parser.parseFromString(svg, 'image/svg+xml')
-
-    let markup = element.children[0].innerHTML
-    let viewBox = element.children[0].getAttribute('viewBox')
-
-    return { markup, viewBox }
   }
 
   // ----- Load Asset ----- //
@@ -68,7 +53,7 @@ export default class extends React.Component {
     request.open('GET', this.props.src, true)
 
     request.onload = function() {
-      self.setState(self._parseSvg(this.response))
+      self.setState(parseSvg(this.response))
     }
 
     request.send()
