@@ -11,6 +11,10 @@
 
 import React from 'react'
 
+// ----- Components ----- //
+
+import InlineSvg from './inline-svg.jsx'
+
 // -------------------------------------
 //   Component
 // -------------------------------------
@@ -20,7 +24,7 @@ export default class extends React.Component {
     return (
       <header className='hero'>
         <div className='row'>
-          <img src='https://placehold.it/480x200'/>
+          <InlineSvg src='/images/logo.svg'/>
         </div>
       </header>
     )
