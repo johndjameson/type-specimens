@@ -13,6 +13,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, Link, browserHistory } from 'react-router'
 
+// ----- Components ----- //
+
+import Hero from './components/hero'
+
 // -------------------------------------
 //   Components
 // -------------------------------------
@@ -59,18 +63,6 @@ class App extends React.Component {
     }
 
     request.send()
-  }
-}
-
-class Hero extends React.Component {
-  render() {
-    return (
-      <header className='hero'>
-        <div className='row'>
-          <img src='https://placehold.it/480x200'/>
-        </div>
-      </header>
-    )
   }
 }
 
