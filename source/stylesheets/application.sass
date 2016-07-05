@@ -13,6 +13,9 @@ body
   margin: 0
   padding: 0
 
+a
+  color: inherit
+
 p
   margin: 0
   padding: 0
@@ -24,6 +27,11 @@ p
   padding-bottom: 60px
   padding-top: 60px
   text-align: center
+
+svg
+  height: auto
+  max-width: 100%
+  vertical-align: middle
 
 img
   height: auto
@@ -54,6 +62,39 @@ img
 .thumbnail-media
   border-radius: 1px
   width: 100%
+
+// -------------------------------------
+//   Logo
+// -------------------------------------
+
+.logo
+  display: inline-block
+  max-width: 100%
+  position: relative
+  text-align: left
+
+.logo-svg
+  margin-bottom: -5.5% // FIXME: Magic number!
+
+.logo-tagline
+  color: #c1d3f5
+  font-size: 19px
+  letter-spacing: ( 0.4px / 19px ) * 1em
+  margin-left: 21%
+
+// -------------------------------------
+//   Helpers
+// -------------------------------------
+
+.srt
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
 
 // -------------------------------------
 //   Tools

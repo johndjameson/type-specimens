@@ -24,7 +24,14 @@ export default class extends React.Component {
     return (
       <header className='hero'>
         <div className='row'>
-          <InlineSvg src='/images/logo.svg' width={593}/>
+          <div className='logo'>
+            <h1 className='srt'>Type Specimens</h1>
+            <InlineSvg className='logo-svg' src='/images/logo.svg' width={593}/>
+            <p className='logo-tagline'>
+              Curated from around the web by&nbsp;
+              <a href='https://johndjameson.com/'>John&nbsp;D.&nbsp;Jameson</a>
+            </p>
+          </div>
         </div>
       </header>
     )
