@@ -15,7 +15,7 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 
 // ----- Components ----- //
 
-import App from './components/app'
+import App from './components/app.jsx'
 
 // -------------------------------------
 //   Router

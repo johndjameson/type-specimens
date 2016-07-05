@@ -13,8 +13,8 @@ import React from 'react'
 
 // ----- Components ----- //
 
-import Collection from './collection'
-import Hero from './hero'
+import Collection from './collection.jsx'
+import Hero from './hero.jsx'
 
 // -------------------------------------
 //   Component

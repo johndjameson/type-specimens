@@ -13,7 +13,7 @@ import React from 'react'
 
 // ----- Components ----- //
 
-import CollectionItem from './collection-item'
+import CollectionItem from './collection-item.jsx'
 
 // -------------------------------------
 //   Component
