@@ -14,26 +14,55 @@ import ReactDOM from 'react-dom'
 import { Router, Route, Link, browserHistory } from 'react-router'
 
 // -------------------------------------
-//   Base
+//   Components
 // -------------------------------------
 
 class App extends React.Component {
+
+  // ----- Constructor ----- //
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      records: []
+    }
+  }
+
+  // ----- Lifecycle ----- //
+
+  componentWillMount() {
+    this._loadRecords()
+  }
 
   render() {
     return (
       <main>
         <Hero/>
         <section className='row'>
-          <Collection/>
+          <Collection records={this.state.records}/>
         </section>
       </main>
     )
   }
 
+  // ----- Load Records ----- //
+
+  _loadRecords() {
+    let request = new XMLHttpRequest()
+    let self = this
+
+    request.open('GET', 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=keyNzlXjAWOzfVKzD&sortField=Title', true)
+
+    request.onload = function(something) {
+      self.setState({ records: JSON.parse(this.response).records })
+    }
+
+    request.send()
+  }
 }
 
 class Hero extends React.Component {
-
   render() {
     return (
       <header className='hero'>
@@ -43,15 +72,13 @@ class Hero extends React.Component {
       </header>
     )
   }
-
 }
 
 class Collection extends React.Component {
-
   render() {
     return (
       <div className='collection'>
-        { data.map( item => {
+        { this.props.records.map( item => {
           return (
             <CollectionItem
               imageSrc={item.fields['Screenshots'][0]['url']}
@@ -64,11 +91,9 @@ class Collection extends React.Component {
       </div>
     )
   }
-
 }
 
 class CollectionItem extends React.Component {
-
   render() {
     return (
       <div className='collection-item'>
@@ -81,8 +106,11 @@ class CollectionItem extends React.Component {
       </div>
     )
   }
-
 }
+
+// -------------------------------------
+//   Router
+// -------------------------------------
 
 let routes = (
   <Router history={browserHistory}>
@@ -90,23 +118,8 @@ let routes = (
   </Router>
 )
 
-var request = new XMLHttpRequest();
-var data;
-request.open('GET', 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=keyNzlXjAWOzfVKzD&sortField=Title', true);
+// -------------------------------------
+//   Main
+// -------------------------------------
 
-request.onload = function() {
-  if (this.status >= 200 && this.status < 400) {
-    data = JSON.parse(this.response).records;
-    ReactDOM.render( routes, document.querySelector( '#js-app' ) )
-  } else {
-    // We reached our target server, but it returned an error
-
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-};
-
-request.send();
-
+ReactDOM.render(routes, document.querySelector('#js-app'))
