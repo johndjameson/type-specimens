@@ -13,6 +13,8 @@
     "babelify": "^7.3.0",
     "browser-sync": "^2.13.0",
     "browserify": "^13.0.1",
+    "eslint": "^3.0.1",
+    "eslint-plugin-react": "^5.2.2",
     "node-sass": "^3.8.0",
     "postcss-cli": "^2.5.2",
     "react": "^15.2.0",
@@ -23,6 +25,7 @@
     "autoprefixer": "postcss --use autoprefixer --replace build/stylesheets/**/*",
     "clean": "rm -rf build/",
     "javascript": "browserify --transform [babelify] source/javascripts/main.jsx > build/javascripts/application.js",
+    "lint": "eslint source/javascripts/ --ext .js,.jsx",
     "sass": "node-sass source/stylesheets/ --output build/stylesheets/",
     "serve": "browser-sync start --server 'build/' --files 'build/**/*'"
   }
