@@ -27,6 +27,7 @@
   "scripts": {
     "autoprefixer": "postcss --use autoprefixer --replace build/stylesheets/**/*",
     "clean": "rm -rf build/",
+    "javascript": "browserify --transform [babelify] source/javascripts/main.jsx > build/javascripts/application.js",
     "sass": "node-sass source/stylesheets/ --output build/stylesheets/",
     "serve": "browser-sync start --server 'build/' --files 'build/**/*'"
   }
