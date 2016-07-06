@@ -12,6 +12,7 @@
 let gulp = require('gulp')
 let browserSync = require('browser-sync').create()
 let sass = require('gulp-sass')
+let sourceMaps = require('gulp-sourcemaps')
 
 // -------------------------------------
 //   Tasks
@@ -33,7 +34,9 @@ gulp.task('serve', ['sass'], function() {
 
 gulp.task('sass', function() {
   gulp.src('source/stylesheets/application.sass')
+    .pipe(sourceMaps.init())
     .pipe(sass())
+    .pipe(sourceMaps.write())
     .pipe(gulp.dest('build/stylesheets'))
     .pipe(browserSync.stream())
 })
