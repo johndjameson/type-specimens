@@ -19,7 +19,7 @@ let sass = require('gulp-sass')
 
 // ----- Browser Sync ----- //
 
-gulp.task('bs', ['sass'], function() {
+gulp.task('serve', ['sass'], function() {
   browserSync.init({
     server: {
       baseDir: './build'
@@ -40,4 +40,4 @@ gulp.task('sass', function() {
 
 // ----- Default ----- //
 
-gulp.task('default', function() {})
+gulp.task('default', ['serve'])
