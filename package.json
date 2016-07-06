@@ -23,10 +23,14 @@
   },
   "scripts": {
     "autoprefixer": "postcss --use autoprefixer --replace build/stylesheets/**/*",
+    "build": "npm run scaffold && npm run html && npm run sass && npm run javascript && npm run images",
     "clean": "rm -rf build/",
+    "html": "cp source/index.html build/",
+    "images": "cp -rf source/images build/",
     "javascript": "browserify --transform [babelify] source/javascripts/main.jsx > build/javascripts/application.js",
     "lint": "eslint source/javascripts/ --ext .js,.jsx",
     "sass": "node-sass source/stylesheets/ --output build/stylesheets/",
+    "scaffold": "mkdir -p build/stylesheets/ build/javascripts/ build/images/",
     "serve": "browser-sync start --server 'build/' --files 'build/**/*'"
   }
 }
