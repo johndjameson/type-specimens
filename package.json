@@ -29,6 +29,7 @@
     "images": "cp -rf source/images build/",
     "javascript": "browserify --transform [babelify] source/javascripts/main.jsx > build/javascripts/application.js",
     "lint": "eslint source/javascripts/ --ext .js,.jsx",
+    "lint:fix": "eslint source/javascripts/ --ext .js,.jsx --fix",
     "sass": "node-sass source/stylesheets/ --output build/stylesheets/",
     "scaffold": "mkdir -p build/stylesheets/ build/javascripts/ build/images/",
     "serve": "browser-sync start --server 'build/' --files 'build/**/*'",
