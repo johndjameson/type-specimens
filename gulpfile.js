@@ -37,6 +37,7 @@ gulp.task('serve', ['build'], function() {
   })
 
   gulp.watch('source/index.html', ['html'])
+  gulp.watch('source/javascripts/**/*', ['javascript'])
   gulp.watch('source/stylesheets/application.sass', ['sass'])
 })
 
@@ -56,6 +57,7 @@ gulp.task('javascript', function() {
     .bundle()
     .pipe(source('application.js'))
     .pipe(gulp.dest('build/javascripts'))
+    .pipe(browserSync.stream())
 })
 
 // ----- Sass ----- //
