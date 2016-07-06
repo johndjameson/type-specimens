@@ -20,7 +20,7 @@ import Hero from './hero.jsx'
 //   Component
 // -------------------------------------
 
-export default class extends React.Component {
+export default class App extends React.Component {
 
   // ----- Constructor ----- //
 
