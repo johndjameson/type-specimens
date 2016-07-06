@@ -11,6 +11,7 @@
 
 let gulp = require('gulp')
 let browserSync = require('browser-sync').create()
+let sass = require('gulp-sass')
 
 // -------------------------------------
 //   Tasks
@@ -18,12 +19,23 @@ let browserSync = require('browser-sync').create()
 
 // ----- Browser Sync ----- //
 
-gulp.task('bs', function() {
+gulp.task('bs', ['sass'], function() {
   browserSync.init({
     server: {
       baseDir: './build'
     }
   })
+
+  gulp.watch('source/stylesheets/application.sass', ['sass'])
+})
+
+// ----- Sass ----- //
+
+gulp.task('sass', function() {
+  gulp.src('source/stylesheets/application.sass')
+    .pipe(sass())
+    .pipe(gulp.dest('build/stylesheets'))
+    .pipe(browserSync.stream())
 })
 
 // ----- Default ----- //
