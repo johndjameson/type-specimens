@@ -27,7 +27,7 @@ gulp.task('build', ['html', 'sass'])
 gulp.task('serve', ['build'], function() {
   browserSync.init({
     server: {
-      baseDir: './build'
+      baseDir: './build/'
     }
   })
 
@@ -50,7 +50,7 @@ gulp.task('sass', function() {
     .pipe(sourceMaps.init())
     .pipe(sass())
     .pipe(sourceMaps.write())
-    .pipe(gulp.dest('build/stylesheets'))
+    .pipe(gulp.dest('build/stylesheets/'))
     .pipe(browserSync.stream())
 })
 
