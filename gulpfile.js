@@ -27,7 +27,16 @@ gulp.task('serve', ['sass'], function() {
     }
   })
 
+  gulp.watch('source/index.html', ['html'])
   gulp.watch('source/stylesheets/application.sass', ['sass'])
+})
+
+// ----- HTML ----- //
+
+gulp.task('html', function() {
+  gulp.src('source/index.html')
+    .pipe(gulp.dest('build/'))
+    .pipe(browserSync.stream())
 })
 
 // ----- Sass ----- //
