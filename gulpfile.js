@@ -1,268 +1,91 @@
 // *************************************
 //
 //   Gulpfile
-//
-// *************************************
-//
-// Available tasks:
-//   `gulp`
-//   `gulp build`
-//   `gulp browserify`
-//   `gulp compile:sass`
-//   `gulp connect`
-//   `gulp html`
-//   `gulp images`
-//   `gulp minify:css`
-//   `gulp watch`
+//   -> Task runner configuration
 //
 // *************************************
 
 // -------------------------------------
-//   Plugins
-// -------------------------------------
-//
-// babelify          : Babel Browserify transform
-// browserify        : Browser-side require()
-// gulp              : The streaming build system
-// gulp-autoprefixer : Prefix CSS
-// gulp-concat       : Concatenate files
-// gulp-connect      : Gulp plugin to run a webserver (with LiveReload)
-// gulp-load-plugins : Automatically load Gulp plugins
-// gulp-minify-css   : Minify CSS
-// gulp-plumber      : Prevent pipe breaking from errors
-// gulp-rename       : Rename files
-// gulp-sass         : Compile Sass
-// gulp-uglify       : Minify JavaScript with UglifyJS
-// gulp-util         : Utility functions
-// gulp-watch        : Watch stream
-// react             : React JavaScript library
-// reactify          : Browserify transform for JSX
-// run-sequence      : Run a series of dependent Gulp tasks in order
-//
+//   Dependencies
 // -------------------------------------
 
-var gulp    = require( 'gulp' );
-var run     = require( 'run-sequence' );
-var plugins = require( 'gulp-load-plugins' )( {
-
-  rename : {
-    'gulp-minify-css': 'cssmin'
-  }
-
-} );
+let babelify = require('babelify')
+let browserSync = require('browser-sync').create()
+let browserify = require('browserify')
+let gulp = require('gulp')
+let sass = require('gulp-sass')
+let source = require('vinyl-source-stream')
+let sourceMaps = require('gulp-sourcemaps')
+let uglify = require('gulp-uglify')
 
 // -------------------------------------
-//   Options
+//   Tasks
 // -------------------------------------
 
-var options = {
+// ----- Build ----- //
 
-  // ----- Default ----- //
+gulp.task('build', ['html', 'sass', 'javascript', 'images'])
 
-  default : {
-    tasks : [ 'build', 'connect', 'watch' ]
-  },
+// ----- Uglify ----- //
 
-  // ----- Build ----- //
+gulp.task('uglify', function() {
+  gulp.src('build/javascripts/application.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('build/javascripts/'))
+})
 
-  build : {
-    tasks       : [ 'minify:css', 'browserify', 'html', 'images' ],
-    destination : 'build/'
-  },
+// ----- Browser Sync ----- //
 
-  // ----- Browserify ----- //
-
-  browserify : {
-    file        : 'source/javascripts/main.jsx',
-    outputFile  : 'application.js',
-    destination : 'build/javascripts'
-  },
-
-  // ----- Connect ----- //
-
-  connect : {
-    port : 9000,
-    base : 'http://localhost',
-    root : 'build'
-  },
-
-  // ----- CSS ----- //
-
-  css : {
-    files       : 'source/stylesheets/*.css',
-    file        : 'build/stylesheets/application.css',
-    destination : 'build/stylesheets'
-  },
-
-  // ----- HTML ----- //
-
-  html : {
-    files           : 'source/*.html',
-    file            : 'source/index.html',
-    destination     : 'build',
-    destinationFile : 'build/index.html'
-  },
-
-  // ----- Images ----- //
-
-  images : {
-    files       : 'source/images/**/*',
-    destination : 'build/images'
-  },
-
-  // ----- JavaScript ----- //
-
-  js : {
-    files       : [ 'source/javascripts/main.jsx', 'source/javascripts/**/*.jsx' ],
-    file        : 'source/javascripts/main.jsx',
-    destination : 'build/javascripts'
-  },
-
-  // ----- Sass ----- //
-
-  sass : {
-    files       : 'source/stylesheets/*.sass',
-    destination : 'build/stylesheets'
-  },
-
-  // ----- Watch ----- //
-
-  watch : {
-    files : function() {
-      return [
-        options.html.files,
-        options.js.files,
-        options.sass.files
-      ]
-    },
-    run : function() {
-      return [
-        [ 'html', 'images' ],
-        [ 'browserify' ],
-        [ 'compile:sass', 'minify:css' ]
-      ]
+gulp.task('serve', ['build'], function() {
+  browserSync.init({
+    notify: false,
+    server: {
+      baseDir: './build/'
     }
-  }
+  })
 
-};
+  gulp.watch('source/index.html', ['html'])
+  gulp.watch('source/javascripts/**/*', ['javascript'])
+  gulp.watch('source/stylesheets/application.sass', ['sass'])
+})
 
-// -------------------------------------
-//   Task: Default
-// -------------------------------------
+// ----- HTML ----- //
 
-gulp.task( 'default', options.default.tasks );
+gulp.task('html', function() {
+  gulp.src('source/index.html')
+    .pipe(gulp.dest('build/'))
+    .pipe(browserSync.stream())
+})
 
-// -------------------------------------
-//   Task: Build
-// -------------------------------------
+// ----- JavaScript ----- //
 
-gulp.task( 'build', function() {
+gulp.task('javascript', function() {
+  browserify('source/javascripts/main.jsx')
+    .transform('babelify', { presets: ['es2015', 'react'] })
+    .bundle()
+    .pipe(source('application.js'))
+    .pipe(gulp.dest('build/javascripts/'))
+    .pipe(browserSync.stream())
+})
 
-  options.build.tasks.forEach( function( task ) {
-    gulp.start( task );
-  } );
+// ----- Images ----- //
 
-});
+gulp.task('images', function() {
+  gulp.src('source/images/**/*')
+    .pipe(gulp.dest('build/images/'))
+})
 
-// -------------------------------------
-//   Task: Browserify
-// -------------------------------------
+// ----- Sass ----- //
 
-gulp.task( 'browserify', function() {
+gulp.task('sass', function() {
+  gulp.src('source/stylesheets/application.sass')
+    .pipe(sourceMaps.init())
+    .pipe(sass())
+    .pipe(sourceMaps.write())
+    .pipe(gulp.dest('build/stylesheets/'))
+    .pipe(browserSync.stream())
+})
 
-  gulp.src( options.browserify.file )
-    .pipe( plugins.plumber() )
-    .pipe( plugins.browserify( {
-      transform: [ 'babelify', 'reactify' ]
-    } ) )
-    .pipe( plugins.concat( options.browserify.outputFile ) )
-    .pipe( gulp.dest( options.browserify.destination ) )
-    .pipe( plugins.connect.reload() );
+// ----- Default ----- //
 
-});
-
-// -------------------------------------
-//   Task: Compile: Sass
-// -------------------------------------
-
-gulp.task( 'compile:sass', function () {
-
-  gulp.src( options.sass.files )
-    .pipe( plugins.plumber() )
-    .pipe( plugins.sass( { indentedSyntax: true } ) )
-    .pipe( plugins.autoprefixer( {
-            browsers : [ 'last 2 versions' ],
-            cascade  : false
-        } ) )
-    .pipe( gulp.dest( options.sass.destination ) )
-    .pipe( plugins.connect.reload() );
-
-} );
-
-// -------------------------------------
-//   Task: Connect
-// -------------------------------------
-
-gulp.task( 'connect', function() {
-
-  plugins.connect.server( {
-    root       : [ options.connect.root ],
-    port       : options.connect.port,
-    base       : options.connect.base,
-    livereload : true
-  } );
-
-});
-
-// -------------------------------------
-//   Task: HTML
-// -------------------------------------
-
-gulp.task( 'html', function() {
-
-  gulp.src( options.html.files )
-    .pipe( gulp.dest( options.html.destination ) )
-    .pipe( plugins.connect.reload() );
-
-});
-
-// -------------------------------------
-//   Task: Images
-// -------------------------------------
-
-gulp.task( 'images', function() {
-
-  gulp.src( options.images.files )
-    .pipe( gulp.dest( options.images.destination ) )
-    .pipe( plugins.connect.reload() );
-
-});
-
-// -------------------------------------
-//   Task: Minify: CSS
-// -------------------------------------
-
-gulp.task( 'minify:css', function () {
-
-  gulp.src( options.css.file )
-    .pipe( plugins.plumber() )
-    .pipe( plugins.cssmin( { advanced: false } ) )
-    .pipe( plugins.rename( { suffix: '.min' } ) )
-    .pipe( gulp.dest( options.css.destination ) )
-    .pipe( plugins.connect.reload() );
-
-} );
-
-// -------------------------------------
-//   Task: Watch
-// -------------------------------------
-
-gulp.task( 'watch', function() {
-
-  var watchFiles = options.watch.files();
-
-  watchFiles.forEach( function( files, index ) {
-    gulp.watch( files, options.watch.run()[ index ]  );
-  } );
-
-});
+gulp.task('default', ['serve'])
