@@ -13,16 +13,11 @@
     "babelify": "^7.3.0",
     "browser-sync": "^2.13.0",
     "browserify": "^13.0.1",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.4",
     "node-sass": "^3.8.0",
     "postcss-cli": "^2.5.2",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
-    "react-router": "^2.5.2",
-    "vinyl-source-stream": "^1.1.0"
+    "react-router": "^2.5.2"
   },
   "scripts": {
     "autoprefixer": "postcss --use autoprefixer --replace build/stylesheets/**/*",
