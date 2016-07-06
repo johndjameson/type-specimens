@@ -16,6 +16,7 @@
         "indent": [ "error", 2 ],
         "linebreak-style": [ "error", "unix" ],
         "quotes": [ "error", "single" ],
+        "react/jsx-uses-react": 1,
         "react/jsx-uses-vars": 2,
         "semi": [ "error", "never" ]
     }
