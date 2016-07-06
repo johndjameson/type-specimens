@@ -31,6 +31,7 @@
     "lint": "eslint source/javascripts/ --ext .js,.jsx",
     "sass": "node-sass source/stylesheets/ --output build/stylesheets/",
     "scaffold": "mkdir -p build/stylesheets/ build/javascripts/ build/images/",
-    "serve": "browser-sync start --server 'build/' --files 'build/**/*'"
+    "serve": "browser-sync start --server 'build/' --files 'build/**/*'",
+    "start": "npm run build && npm run serve"
   }
 }
