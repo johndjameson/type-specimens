@@ -9,9 +9,13 @@
 //   Dependencies
 // -------------------------------------
 
-let gulp = require('gulp')
+let babelify = require('babelify')
 let browserSync = require('browser-sync').create()
+let browserify = require('browserify')
+let gulp = require('gulp')
+let gutil = require('gulp-util')
 let sass = require('gulp-sass')
+let source = require('vinyl-source-stream')
 let sourceMaps = require('gulp-sourcemaps')
 
 // -------------------------------------
@@ -20,7 +24,7 @@ let sourceMaps = require('gulp-sourcemaps')
 
 // ----- Build ----- //
 
-gulp.task('build', ['html', 'sass'])
+gulp.task('build', ['html', 'sass', 'javascript'])
 
 // ----- Browser Sync ----- //
 
@@ -42,6 +46,16 @@ gulp.task('html', function() {
   gulp.src('source/index.html')
     .pipe(gulp.dest('build/'))
     .pipe(browserSync.stream())
+})
+
+// ----- JavaScript ----- //
+
+gulp.task('javascript', function() {
+  browserify('source/javascripts/main.jsx')
+    .transform('babelify', { presets: ['es2015', 'react'] })
+    .bundle()
+    .pipe(source('application.js'))
+    .pipe(gulp.dest('build/javascripts'))
 })
 
 // ----- Sass ----- //
