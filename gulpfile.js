@@ -16,6 +16,7 @@ let gulp = require('gulp')
 let sass = require('gulp-sass')
 let source = require('vinyl-source-stream')
 let sourceMaps = require('gulp-sourcemaps')
+let uglify = require('gulp-uglify')
 
 // -------------------------------------
 //   Tasks
@@ -24,6 +25,14 @@ let sourceMaps = require('gulp-sourcemaps')
 // ----- Build ----- //
 
 gulp.task('build', ['html', 'sass', 'javascript', 'images'])
+
+// ----- Uglify ----- //
+
+gulp.task('uglify', function() {
+  gulp.src('dist/javascripts/application.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('build/javascripts/'))
+})
 
 // ----- Browser Sync ----- //
 
