@@ -29,7 +29,7 @@ gulp.task('build', ['html', 'sass', 'javascript', 'images'])
 // ----- Uglify ----- //
 
 gulp.task('uglify', function() {
-  gulp.src('dist/javascripts/application.js')
+  gulp.src('build/javascripts/application.js')
     .pipe(uglify())
     .pipe(gulp.dest('build/javascripts/'))
 })
