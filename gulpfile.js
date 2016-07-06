@@ -18,9 +18,13 @@ let sourceMaps = require('gulp-sourcemaps')
 //   Tasks
 // -------------------------------------
 
+// ----- Build ----- //
+
+gulp.task('build', ['html', 'sass'])
+
 // ----- Browser Sync ----- //
 
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', ['build'], function() {
   browserSync.init({
     server: {
       baseDir: './build'
