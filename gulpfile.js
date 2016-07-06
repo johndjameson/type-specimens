@@ -26,6 +26,7 @@ gulp.task('build', ['html', 'sass'])
 
 gulp.task('serve', ['build'], function() {
   browserSync.init({
+    notify: false,
     server: {
       baseDir: './build/'
     }
