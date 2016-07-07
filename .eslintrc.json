@@ -19,7 +19,6 @@
         "indent": [ "error", 2 ],
         "linebreak-style": [ "error", "unix" ],
         "quotes": [ "error", "single" ],
-        "react/display-name": 0,
         "react/no-danger": 1,
         "react/jsx-uses-react": 1,
         "react/jsx-uses-vars": 2,
