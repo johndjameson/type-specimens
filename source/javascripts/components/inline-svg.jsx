@@ -19,7 +19,7 @@ import { createMarkup, parseSvg } from '../helpers.jsx'
 //   Component
 // -------------------------------------
 
-export default class extends React.Component {
+export default class InlineSvg extends React.Component {
 
   // ----- Constructor ----- //
 
@@ -62,4 +62,9 @@ export default class extends React.Component {
 
     request.send()
   }
+}
+
+InlineSvg.propTypes = {
+  src: React.PropTypes.string.isRequired,
+  width: React.PropTypes.number
 }

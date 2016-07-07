@@ -19,7 +19,7 @@ import InlineSvg from './inline-svg.jsx'
 //   Component
 // -------------------------------------
 
-export default class extends React.Component {
+export default class Hero extends React.Component {
   render() {
     return (
       <header className='hero'>
