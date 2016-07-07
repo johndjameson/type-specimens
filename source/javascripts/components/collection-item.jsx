@@ -31,7 +31,7 @@ export default class CollectionItem extends React.Component {
 }
 
 CollectionItem.propTypes = {
-  imageSrc: React.propTypes.string.isRequired,
-  title: React.propTypes.string.isRequired,
-  url: React.propTypes.string.isRequired
+  imageSrc: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string.isRequired
 }
