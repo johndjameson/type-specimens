@@ -20,8 +20,6 @@
         "linebreak-style": [ "error", "unix" ],
         "quotes": [ "error", "single" ],
         "react/no-danger": 1,
-        "react/jsx-uses-react": 1,
-        "react/jsx-uses-vars": 2,
         "semi": [ "error", "never" ]
     }
 }
