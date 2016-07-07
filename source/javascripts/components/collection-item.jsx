@@ -15,7 +15,7 @@ import React from 'react'
 //   Component
 // -------------------------------------
 
-export default class extends React.Component {
+export default class CollectionItem extends React.Component {
   render() {
     return (
       <div className='collection-item'>
@@ -28,4 +28,10 @@ export default class extends React.Component {
       </div>
     )
   }
+}
+
+CollectionItem.propTypes = {
+  imageSrc: React.propTypes.string.isRequired,
+  title: React.propTypes.string.isRequired,
+  url: React.propTypes.string.isRequired
 }

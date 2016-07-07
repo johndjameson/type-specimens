@@ -19,7 +19,7 @@ import CollectionItem from './collection-item.jsx'
 //   Component
 // -------------------------------------
 
-export default class extends React.Component {
+export default class Collection extends React.Component {
   render() {
     return (
       <div className='collection'>
@@ -36,4 +36,8 @@ export default class extends React.Component {
       </div>
     )
   }
+}
+
+Collection.propTypes = {
+  records: React.PropTypes.array.isRequired
 }
