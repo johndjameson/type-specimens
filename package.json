@@ -28,7 +28,7 @@
   "scripts": {
     "autoprefixer": "postcss --use autoprefixer --replace build/stylesheets/**/*",
     "build": "npm run scaffold && npm run html && npm run sass && npm run javascript && npm run images",
-    "build:production": "npm run clean && npm run build && npm run minify:css && npm run minify:javascript",
+    "build:production": "npm run clean && npm run scaffold && npm run html && npm run sass && npm run javascript:production && npm run images && npm run minify:css && npm run minify:javascript",
     "clean": "rm -rf build/",
     "develop": "parallelshell 'npm start' 'npm run watch:sass' 'npm run watch:javascript'",
     "html": "cp source/index.html build/",
