@@ -30,7 +30,7 @@
     "build": "npm run scaffold && npm run html && npm run sass && npm run javascript && npm run images",
     "build:production": "npm run clean && npm run scaffold && npm run html && npm run sass && npm run javascript:production && npm run images && npm run minify:css && npm run minify:javascript",
     "clean": "rm -rf build/",
-    "develop": "parallelshell 'npm start' 'npm run watch:sass' 'npm run watch:javascript'",
+    "develop": "parallelshell 'npm start' 'npm run watch:html' 'npm run watch:sass' 'npm run watch:javascript'",
     "html": "cp source/index.html build/",
     "images": "cp -rf source/images build/",
     "javascript": "browserify --transform [babelify] source/javascripts/main.jsx > .application.temp.js && mv .application.temp.js build/javascripts/application.js",
@@ -43,6 +43,7 @@
     "scaffold": "mkdir -p build/stylesheets/ build/javascripts/ build/images/",
     "serve": "browser-sync start --server 'build/' --files 'build/**/*'",
     "start": "npm run build && npm run serve",
+    "watch:html": "onchange 'source/**/*.html' -v -- npm run html",
     "watch:javascript": "onchange 'source/javascripts/**/*' -v -- npm run javascript",
     "watch:sass": "onchange 'source/stylesheets/**/*' -v -- npm run sass"
   }
