@@ -24,7 +24,9 @@ export default class CollectionItem extends React.Component {
             <img className='thumbnail-media' src={this.props.imageSrc} alt={this.props.title} />
           </a>
         </div>
-        {/*<p className='tac fss fw5'>{this.props.title}</p>*/}
+        <p className='fss lh30px tac'>
+          <a className='link' href={this.props.url}>{this.props.title}</a>
+        </p>
       </div>
     )
   }
