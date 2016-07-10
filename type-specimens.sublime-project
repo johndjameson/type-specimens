@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"type-specimens.sublime-workspace"
+			],
+			"folder_exclude_patterns":
+			[
+				"build",
+				"screenshots"
+			],
+			"path": "."
+		}
+	]
+}
