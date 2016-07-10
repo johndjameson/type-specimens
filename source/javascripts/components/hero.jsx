@@ -29,7 +29,7 @@ export default class Hero extends React.Component {
             <InlineSvg className='logo-svg' src='/images/logo.svg' width={593}/>
             <p className='logo-tagline'>
               Curated from around the web by&nbsp;
-              <a href='https://johndjameson.com/'>John&nbsp;D.&nbsp;Jameson</a>
+              <a className='link link--underlined' href='https://johndjameson.com/'>John&nbsp;D.&nbsp;Jameson</a>
             </p>
           </div>
         </div>
