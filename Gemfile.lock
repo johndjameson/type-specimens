@@ -1,12 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    rake (11.2.2)
     slugify (1.0.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  rake
   slugify
 
 BUNDLED WITH
