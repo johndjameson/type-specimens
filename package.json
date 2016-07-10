@@ -27,8 +27,8 @@
   },
   "scripts": {
     "autoprefixer": "postcss --use autoprefixer --replace build/stylesheets/**/*",
-    "build": "npm run scaffold && npm run html && npm run sass && npm run javascript && npm run images",
-    "build:production": "npm run clean && npm run scaffold && npm run html && npm run sass && npm run javascript:production && npm run images && npm run minify:css && npm run minify:javascript",
+    "build": "npm run scaffold && npm run html && npm run styles && npm run javascript && npm run images",
+    "build:production": "npm run clean && npm run scaffold && npm run html && npm run styles && npm run javascript:production && npm run images && npm run minify:css && npm run minify:javascript",
     "clean": "rm -rf build/",
     "develop": "parallelshell 'npm start' 'npm run watch:html' 'npm run watch:sass' 'npm run watch:javascript'",
     "html": "cp source/index.html build/",
@@ -43,8 +43,9 @@
     "scaffold": "mkdir -p build/stylesheets/ build/javascripts/ build/images/",
     "serve": "browser-sync start --server 'build/' --files 'build/**/*'",
     "start": "npm run build && npm run serve",
+    "styles": "npm run sass && npm run autoprefixer",
     "watch:html": "onchange 'source/**/*.html' -v -- npm run html",
     "watch:javascript": "onchange 'source/javascripts/**/*' -v -- npm run javascript",
-    "watch:sass": "onchange 'source/stylesheets/**/*' -v -- npm run sass"
+    "watch:sass": "onchange 'source/stylesheets/**/*' -v -- npm run styles"
   }
 }
