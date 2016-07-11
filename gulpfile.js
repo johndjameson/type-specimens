@@ -5,18 +5,28 @@
 // *************************************
 /* eslint-env node */
 
+// -------------------------------------
+//  Dependencies
+// -------------------------------------
+
+let autoprefixer = require('gulp-autoprefixer')
 let babelify = require('babelify')
 let browserify = require('browserify')
 let browserSync = require('browser-sync').create()
 let buffer = require('vinyl-buffer')
+let cleanCss = require('gulp-clean-css')
+let del = require('del')
 let gulp = require('gulp')
 let gulpIf = require('gulp-if')
 let gulpUtil = require('gulp-util')
 let sass = require('gulp-sass')
 let sourceStream = require('vinyl-source-stream')
 let uglify = require('gulp-uglify')
-
 let watchify = require('watchify')
+
+// -------------------------------------
+//  Configuration
+// -------------------------------------
 
 let isProduction = process.env.NODE_ENV === 'production'
 
@@ -25,7 +35,6 @@ let isProduction = process.env.NODE_ENV === 'production'
 // -------------------------------------
 
 function bundle(bundler) {
-  gulpUtil.log(isProduction)
   return bundler
     .transform(babelify)
     .bundle()
@@ -46,16 +55,24 @@ function bundle(bundler) {
 //  Functions
 // -------------------------------------
 
+// ----- Build ----- //
+
+gulp.task('build', ['clean', 'html', 'images', 'javascript', 'sass'])
+
+// ----- Clean ----- //
+
+gulp.task('clean', function () {
+  return del('build/')
+})
+
 // ----- Default ----- //
 
-gulp.task('default', function () {
-  // ...
-})
+gulp.task('default', ['watch'])
 
 // ----- HTML ----- //
 
 gulp.task('html', function () {
-  gulp
+  return gulp
     .src('source/**/*.html')
     .pipe(gulp.dest('build/'))
     .pipe(browserSync.stream())
@@ -64,7 +81,7 @@ gulp.task('html', function () {
 // ----- Images ----- //
 
 gulp.task('images', function () {
-  gulp
+  return gulp
     .src('source/images/**/*')
     .pipe(gulp.dest('build/images/'))
     .pipe(browserSync.stream())
@@ -73,15 +90,17 @@ gulp.task('images', function () {
 // ----- JavaScript ----- //
 
 gulp.task('javascript', function () {
-  bundle(browserify('source/javascripts/main.jsx'))
+  return bundle(browserify('source/javascripts/main.jsx'))
 })
 
 // ----- Sass ----- //
 
 gulp.task('sass', function() {
-  gulp
+  return gulp
     .src('source/stylesheets/**/*')
     .pipe(sass())
+    .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
+    .pipe(gulpIf(isProduction, cleanCss({ advanced: false })))
     .pipe(gulp.dest('build/stylesheets'))
     .pipe(browserSync.stream())
 })
@@ -103,7 +122,7 @@ gulp.task('watch', function () {
   gulp.watch('source/images/**/*', ['images'])
   gulp.watch('source/stylesheets/**/*', ['sass'])
 
-  browserSync.init({
+  return browserSync.init({
     server: './build'
   })
 })
