@@ -20,6 +20,7 @@ let gulp = require('gulp')
 let gulpIf = require('gulp-if')
 let gulpUtil = require('gulp-util')
 let sass = require('gulp-sass')
+let sourcemaps = require('gulp-sourcemaps')
 let sourceStream = require('vinyl-source-stream')
 let uglify = require('gulp-uglify')
 let watchify = require('watchify')
@@ -98,7 +99,9 @@ gulp.task('javascript', function () {
 gulp.task('sass', function() {
   return gulp
     .src('source/stylesheets/**/*')
+    .pipe(sourcemaps.init())
     .pipe(sass())
+    .pipe(sourcemaps.write())
     .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
     .pipe(gulpIf(isProduction, cssnano()))
     .pipe(gulp.dest('build/stylesheets'))
