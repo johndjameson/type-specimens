@@ -19,6 +19,8 @@ let del = require('del')
 let gulp = require('gulp')
 let gulpIf = require('gulp-if')
 let gulpUtil = require('gulp-util')
+let plumber = require('gulp-plumber')
+let runSequence = require('run-sequence')
 let sass = require('gulp-sass')
 let sourcemaps = require('gulp-sourcemaps')
 let sourceStream = require('vinyl-source-stream')
@@ -58,17 +60,21 @@ function bundle(bundler) {
 
 // ----- Build ----- //
 
-gulp.task('build', ['clean', 'html', 'images', 'javascript', 'sass'])
+gulp.task('build', function() {
+  return runSequence('clean', ['html', 'images', 'javascript', 'sass'])
+})
 
 // ----- Clean ----- //
 
 gulp.task('clean', function () {
-  return del('build/')
+  return del('build/**/*')
 })
 
 // ----- Default ----- //
 
-gulp.task('default', ['watch'])
+gulp.task('default', function() {
+  return runSequence('clean', ['html', 'images', 'javascript', 'sass'], 'watch')
+})
 
 // ----- HTML ----- //
 
@@ -99,8 +105,10 @@ gulp.task('javascript', function () {
 gulp.task('sass', function() {
   return gulp
     .src('source/stylesheets/**/*')
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass())
+    .on('error', sass.logError)
     .pipe(sourcemaps.write())
     .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
     .pipe(gulpIf(isProduction, cssnano()))
