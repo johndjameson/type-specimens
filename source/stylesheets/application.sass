@@ -1,32 +1,9 @@
-*, ::before, ::after
-  box-sizing: border-box
+@import 'mvcss/01_reset'
+@import 'mvcss/02_helpers'
+@import 'mvcss/03_config'
+@import 'mvcss/04_base'
 
-html
-  background: #f2f4f7
-  color: #294781
-  font-family: 'effra', sans-serif
-  font-weight: 400
-  line-height: 1.35
-  margin: 0
-  padding: 0
-
-body
-  margin: 0
-  padding: 0
-
-a
-  color: inherit
-  text-decoration: none
-
-.link
-  text-decoration: none
-
-.link--underlined
-  text-decoration: underline
-
-p
-  margin: 0
-  padding: 0
+@import 'modules/link'
 
 .hero
   background: linear-gradient(#355996, #2a467d)
@@ -35,16 +12,6 @@ p
   padding-bottom: 60px
   padding-top: 60px
   text-align: center
-
-svg
-  height: auto
-  max-width: 100%
-  vertical-align: middle
-
-img
-  height: auto
-  max-width: 100%
-  vertical-align: middle
 
 .row
   border-bottom: 1px solid transparent
