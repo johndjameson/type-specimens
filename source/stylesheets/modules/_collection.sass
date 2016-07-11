@@ -1,0 +1,41 @@
+// *************************************
+//
+//   Row
+//   -> Width-spanning blocks
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .collection
+//   .collection-item
+//
+// *************************************
+
+.collection
+  display: flex
+  flex-wrap: wrap
+  margin-bottom: -30px
+  margin-left: -30px
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Item ----- //
+
+.collection-item
+  padding-left: 30px
+  width: 100%
+
+  +respond-to(600px)
+    width: percentage(1/2)
+
+  +respond-to(900px)
+    width: percentage(1/3)
+
+  +respond-to(1300px)
+    width: percentage(1/4)
+
+  +respond-to(1700px)
+    width: percentage(1/5)

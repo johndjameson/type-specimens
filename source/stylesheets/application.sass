@@ -1,98 +1,32 @@
+// *************************************
+//
+//   Type Specimens - MVCSS v5.0.0
+//   -> Manifest
+//
+// *************************************
+
+// -------------------------------------
+//   Foundation
+// -------------------------------------
+
 @import 'mvcss/01_reset'
 @import 'mvcss/02_helpers'
 @import 'mvcss/03_config'
 @import 'mvcss/04_base'
 
-@import 'mvcss/tools'
+// -------------------------------------
+//   Modules
+// -------------------------------------
 
+@import 'modules/collection'
+@import 'modules/hero'
 @import 'modules/link'
-
-.hero
-  background: linear-gradient(#355996, #2a467d)
-  border-bottom: 1px solid #011233
-  margin-bottom: 30px
-  padding-bottom: 60px
-  padding-top: 60px
-  text-align: center
-
-.row
-  border-bottom: 1px solid transparent
-  border-top: 1px solid transparent
-
-.collection
-  display: flex
-  flex-wrap: wrap
-  margin-bottom: -30px
-  margin-left: -30px
-
-  &::after
-    clear: both
-    content: ''
-    display: table
-
-.thumbnail
-  background: #fcfdff
-  border-radius: 3px
-  border: 1px solid #2b487f
-  padding: 5px
-
-.thumbnail-media
-  border-radius: 1px
-  width: 100%
+@import 'modules/logo'
+@import 'modules/row'
+@import 'modules/thumbnail'
 
 // -------------------------------------
-//   Logo
+//   Tools
 // -------------------------------------
 
-.logo
-  display: inline-block
-  max-width: 100%
-  position: relative
-  text-align: left
-
-.logo-svg
-  margin-bottom: -5.5% // FIXME: Magic number!
-
-.logo-tagline
-  color: #c1d3f5
-  font-size: 19px
-  letter-spacing: ( 0.4px / 19px ) * 1em
-  margin-left: 21%
-
-// -------------------------------------
-//   Helpers
-// -------------------------------------
-
-.srt
-  border: 0
-  clip: rect(0 0 0 0)
-  height: 1px
-  margin: -1px
-  overflow: hidden
-  padding: 0
-  position: absolute
-  width: 1px
-
-// -------------------------------------
-//   Inbox
-// -------------------------------------
-
-.collection-item
-  padding-left: 30px
-  width: 100%
-
-  @media screen and (min-width: 600px)
-    width: percentage(1/2)
-
-  @media screen and (min-width: 900px)
-    width: percentage(1/3)
-
-  @media screen and (min-width: 1300px)
-    width: percentage(1/4)
-
-  @media screen and (min-width: 1700px)
-    width: percentage(1/5)
-
-.row
-  padding-left: 5vw
-  padding-right: 5vw
+@import 'mvcss/tools'
