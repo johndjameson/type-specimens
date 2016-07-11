@@ -104,7 +104,7 @@ gulp.task('javascript', function () {
 
 gulp.task('sass', function() {
   return gulp
-    .src('source/stylesheets/**/*')
+    .src('source/stylesheets/**/*.{sass,scss}')
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass())
@@ -131,7 +131,7 @@ gulp.task('watch', function () {
 
   gulp.watch('source/**/*.html', ['html'])
   gulp.watch('source/images/**/*', ['images'])
-  gulp.watch('source/stylesheets/**/*', ['sass'])
+  gulp.watch('source/stylesheets/**/*.{sass,scss}', ['sass'])
 
   return browserSync.init({
     server: './build'
