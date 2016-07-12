@@ -1,4 +1,0 @@
-Type Specimens
-==============
-
-Coming soon.
