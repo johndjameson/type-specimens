@@ -16,7 +16,9 @@
   background: #fcfdff
   border-radius: 3px
   border: 1px solid #2b487f
-  padding: 5px
+  display: block
+  padding: $thumbnail-padding
+  position: relative
 
 // -------------------------------------
 //   Scaffolding
@@ -27,7 +29,10 @@
 .thumbnail-media
   animation: 0.4s ease-in-out thumbnail-in
   border-radius: 1px
-  width: 100%
+  left: $thumbnail-padding
+  max-width: calc(100% - #{$thumbnail-padding * 2})
+  position: absolute
+  top: $thumbnail-padding
 
 // ----- Placeholder ----- //
 

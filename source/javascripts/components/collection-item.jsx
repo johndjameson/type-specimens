@@ -28,14 +28,13 @@ export default class CollectionItem extends React.Component {
   render() {
     return (
       <div className='collection-item'>
-        <div className='thumbnail'>
-          <a href={this.props.url}>
-            { this.state.isImageLoaded ?
-              <img className='thumbnail-media' src={this.props.imageSrc} alt={this.props.title} />
-              : <div className='thumbnail-placeholder' />
-            }
-          </a>
-        </div>
+        <a className='thumbnail' href={this.props.url}>
+          <div className='thumbnail-placeholder' />
+          { this.state.isImageLoaded ?
+            <img className='thumbnail-media' src={this.props.imageSrc} alt={this.props.title} />
+            : null
+          }
+        </a>
         <p className='fss lh30px tac'>
           <a className='link' href={this.props.url}>{this.props.title}</a>
         </p>
