@@ -32,6 +32,7 @@ let watchify = require('watchify')
 // -------------------------------------
 
 let isProduction = process.env.NODE_ENV === 'production'
+let isDevelopment = !isProduction
 
 // -------------------------------------
 //  Functions
@@ -119,7 +120,10 @@ gulp.task('sass', function() {
 // ----- Watch ----- //
 
 gulp.task('watch', function () {
-  let watcher = watchify(browserify('source/javascripts/main.jsx', watchify.args))
+  let watcher
+
+  watchify.args.debug = isDevelopment
+  watcher = watchify(browserify('source/javascripts/main.jsx', watchify.args))
 
   bundle(watcher)
 
