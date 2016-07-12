@@ -7,7 +7,7 @@
 desc 'Build the site'
 task :generate do
   puts '-- Generating site --'
-  system 'npm run build:production'
+  system 'NODE_ENV=production gulp build'
 end
 
 # ----- Production ----- #
