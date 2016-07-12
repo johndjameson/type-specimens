@@ -5,23 +5,35 @@
 //
 // *************************************
 
-// -------------------------------------
-//   Dependencies
-// -------------------------------------
-
 import React from 'react'
 
-// -------------------------------------
-//   Component
-// -------------------------------------
-
 export default class CollectionItem extends React.Component {
+
+  // -------------------------------------
+  //   Component Will Mount
+  // -------------------------------------
+
+  componentWillMount() {
+    this.state = {
+      isImageLoaded: false
+    }
+
+    this._loadImage()
+  }
+
+  // -------------------------------------
+  //   Render
+  // -------------------------------------
+
   render() {
     return (
       <div className='collection-item'>
         <div className='thumbnail'>
           <a href={this.props.url}>
-            <img className='thumbnail-media' src={this.props.imageSrc} alt={this.props.title} />
+            { this.state.isImageLoaded ?
+              <img className='thumbnail-media' src={this.props.imageSrc} alt={this.props.title} />
+              : <div className='thumbnail-placeholder' />
+            }
           </a>
         </div>
         <p className='fss lh30px tac'>
@@ -30,7 +42,25 @@ export default class CollectionItem extends React.Component {
       </div>
     )
   }
+
+  // -------------------------------------
+  //   Load Image
+  // -------------------------------------
+
+  _loadImage() {
+    let image = new Image()
+
+    image.onload = () => {
+      this.setState({ isImageLoaded: true })
+    }
+
+    image.src = this.props.imageSrc
+  }
 }
+
+// -------------------------------------
+//   Prop Validation
+// -------------------------------------
 
 CollectionItem.propTypes = {
   imageSrc: React.PropTypes.string.isRequired,

@@ -25,5 +25,23 @@
 // ----- Media ----- //
 
 .thumbnail-media
+  animation: 0.4s ease-in-out thumbnail-in
   border-radius: 1px
   width: 100%
+
+// ----- Placeholder ----- //
+
+.thumbnail-placeholder
+  background: #d6dae0
+  border-radius: 1px
+  padding-top: percentage(3/4)
+
+// -------------------------------------
+//   Animations
+// -------------------------------------
+
+@keyframes thumbnail-in
+  from
+    opacity: 0
+  to
+    opacity: 1
