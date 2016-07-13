@@ -13,12 +13,13 @@ require_relative '_shared'
 # -------------------------------------
 
 for site in $sites do
-  slug = site['fields']['Title'].slugify
-  url  = site['fields']['URL']
+  delay = site['fields']['Screenshot Delay']
+  slug  = site['fields']['Title'].slugify
+  url   = site['fields']['URL']
 
   if site['fields']['Queue Screenshot']
-    if site['fields']['Screenshot Delay']
-      system "webkit2png --width=1200 --height=900 --fullsize --delay=10 --ignore-ssl-check --dir=screenshots --filename #{slug} #{url}"
+    if delay
+      system "webkit2png --width=1200 --height=900 --fullsize --delay=#{delay} --ignore-ssl-check --dir=screenshots --filename #{slug} #{url}"
     else
       system "webkit2png --width=1200 --height=900 --fullsize --ignore-ssl-check --dir=screenshots --filename #{slug} #{url}"
     end
