@@ -28,7 +28,7 @@ export default class CollectionItem extends React.Component {
   render() {
     return (
       <div className='collection-item'>
-        <a className='thumbnail' href={this.props.url}>
+        <a className='thumbnail' href={this.props.url} tabIndex='-1'>
           <div className='thumbnail-placeholder' />
           { this.state.isImageLoaded ?
             <img className='thumbnail-media' src={this.props.imageSrc} alt={this.props.title} />
