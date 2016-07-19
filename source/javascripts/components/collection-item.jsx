@@ -35,7 +35,7 @@ export default class CollectionItem extends React.Component {
             : null
           }
         </a>
-        <p className='fss lh30px tac'>
+        <p className='fss lh40px tac'>
           <a className='link' href={this.props.url}>{this.props.title}</a>
         </p>
       </div>
