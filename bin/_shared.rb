@@ -18,7 +18,7 @@ require 'slugify'
 #   Config
 # -------------------------------------
 
-data = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Title'
+data = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&filterByFormula=AND(Screenshot)&sortField=Title'
 
 # ----- JSON ----- #
 

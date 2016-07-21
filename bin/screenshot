@@ -17,16 +17,14 @@ for site in $sites do
   slug  = site['fields']['Title'].slugify
   url   = site['fields']['URL']
 
-  if site['fields']['Queue Screenshot']
-    if delay
-      system "webkit2png --width=1200 --height=900 --fullsize --delay=#{delay} --ignore-ssl-check --dir=screenshots --filename #{slug} #{url}"
-    else
-      system "webkit2png --width=1200 --height=900 --fullsize --ignore-ssl-check --dir=screenshots --filename #{slug} #{url}"
-    end
-
-    system "mv screenshots/#{slug}-full.png screenshots/#{slug}.png"
-    system "convert screenshots/#{slug}.png -crop 2400x1800+0+0 screenshots/#{slug}-cropped.png"
-    system "convert -resize 600 screenshots/#{slug}-cropped.png TGA:- | cjpeg -quality 60 -outfile screenshots/#{slug}-thumb.jpg -targa -optimize"
-    system "/Applications/ImageOptim.app/Contents/MacOS/ImageOptim screenshots/#{slug}-thumb.jpg"
+  if delay
+    system "webkit2png --width=1200 --height=900 --fullsize --delay=#{delay} --ignore-ssl-check --dir=screenshots --filename #{slug} #{url}"
+  else
+    system "webkit2png --width=1200 --height=900 --fullsize --ignore-ssl-check --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36' --dir=screenshots --filename #{slug} #{url}"
   end
+
+  system "mv screenshots/#{slug}-full.png screenshots/#{slug}.png"
+  system "convert screenshots/#{slug}.png -crop 2400x1800+0+0 screenshots/#{slug}-cropped.png"
+  system "convert -resize 600 screenshots/#{slug}-cropped.png TGA:- | cjpeg -quality 60 -outfile screenshots/#{slug}-thumb.jpg -targa -optimize"
+  system "/Applications/ImageOptim.app/Contents/MacOS/ImageOptim screenshots/#{slug}-thumb.jpg"
 end
