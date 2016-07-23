@@ -55,7 +55,7 @@ export default class App extends React.Component {
     let request = new XMLHttpRequest()
     let self = this
 
-    request.open('GET', 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=keyNzlXjAWOzfVKzD&sortField=Title&filterByFormula=AND(Published)', true)
+    request.open('GET', 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Title&filterByFormula=AND(Status=%27Published%27)', true)
 
     request.onload = function() {
       self.setState({ records: JSON.parse(this.response).records })
