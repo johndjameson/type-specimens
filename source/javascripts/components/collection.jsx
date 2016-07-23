@@ -28,7 +28,7 @@ export default class Collection extends React.Component {
             <CollectionItem
               imageSrc={item.fields['Screenshots'][0]['url']}
               key={item.id}
-              title={item.fields['Title']}
+              name={item.fields['Name']}
               url={item.fields['URL']}
             />
           )

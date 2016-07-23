@@ -31,12 +31,12 @@ export default class CollectionItem extends React.Component {
         <a className='thumbnail' href={this.props.url} tabIndex='-1'>
           <div className='thumbnail-placeholder' />
           { this.state.isImageLoaded ?
-            <img className='thumbnail-media' src={this.props.imageSrc} alt={this.props.title} />
+            <img className='thumbnail-media' src={this.props.imageSrc} alt={this.props.name} />
             : null
           }
         </a>
         <p className='fss lh40px tac'>
-          <a className='link' href={this.props.url}>{this.props.title}</a>
+          <a className='link' href={this.props.url}>{this.props.name}</a>
         </p>
       </div>
     )
@@ -63,6 +63,6 @@ export default class CollectionItem extends React.Component {
 
 CollectionItem.propTypes = {
   imageSrc: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
   url: React.PropTypes.string.isRequired
 }
