@@ -13,7 +13,7 @@ require_relative '_shared'
 # -------------------------------------
 
 for site in $sites do
-  delay = site['fields']['Screenshot Delay']
+  delay = site['fields']['Delay']
   slug  = site['fields']['Title'].slugify
   url   = site['fields']['URL']
 
