@@ -40,7 +40,6 @@ let isDevelopment = !isProduction
 
 function bundle(bundler) {
   return bundler
-    .transform(babelify)
     .bundle()
     .on('error', function (error) {
       gulpUtil.log(error)
@@ -98,7 +97,7 @@ gulp.task('images', function () {
 // ----- JavaScript ----- //
 
 gulp.task('javascript', function () {
-  return bundle(browserify('source/javascripts/main.jsx'))
+  return bundle(browserify('source/javascripts/main.jsx').transform(babelify))
 })
 
 // ----- Sass ----- //
@@ -123,7 +122,7 @@ gulp.task('watch', function () {
   let watcher
 
   watchify.args.debug = isDevelopment
-  watcher = watchify(browserify('source/javascripts/main.jsx', watchify.args))
+  watcher = watchify(browserify('source/javascripts/main.jsx', watchify.args).transform(babelify))
 
   bundle(watcher)
 
