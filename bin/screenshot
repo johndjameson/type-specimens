@@ -14,7 +14,7 @@ require_relative '_shared'
 
 for site in $sites do
   delay = site['fields']['Delay']
-  slug  = site['fields']['Title'].slugify
+  slug  = site['fields']['Slug']
   url   = site['fields']['URL']
 
   if delay
