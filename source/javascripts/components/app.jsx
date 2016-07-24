@@ -30,6 +30,8 @@ export default class App extends React.Component {
     this.state = {
       records: []
     }
+
+    this.url = 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Slug&filterByFormula=AND(Status=%27Published%27)'
   }
 
   // ----- Lifecycle ----- //
@@ -55,12 +57,34 @@ export default class App extends React.Component {
     let request = new XMLHttpRequest()
     let self = this
 
-    request.open('GET', 'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Slug&filterByFormula=AND(Status=%27Published%27)', true)
+    request.open('GET', self.url)
 
     request.onload = function() {
-      self.setState({ records: JSON.parse(this.response).records })
+      let json = JSON.parse(this.response)
+      let records = json['records']
+
+      self.setState({ records })
+
+      if ('offset' in json) {
+        self._loadSecondRequest(json['offset'])
+      }
     }
 
     request.send()
+  }
+
+  _loadSecondRequest(offset) {
+    let request = new XMLHttpRequest()
+    let self = this
+
+    request.open('GET', `${self.url}&offset=${offset}`)
+    request.send()
+
+    request.onload = function() {
+      let json = JSON.parse(this.response)
+      let records = json['records']
+
+      self.setState({ records: self.state.records.concat(records) })
+    }
   }
 }
