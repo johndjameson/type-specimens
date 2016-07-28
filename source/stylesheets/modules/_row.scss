@@ -1,18 +1,19 @@
 // *************************************
 //
-//   Hero
-//   -> Entry banner
+//   Row
+//   -> Width-spanning blocks
 //
 // -------------------------------------
 //   Template (Haml)
 // -------------------------------------
 //
-// .hero
+// .row
 //
 // *************************************
 
-.hero
-  background: #2e5094
-  padding-bottom: 60px
-  padding-top: 60px
-  text-align: center
+.row {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}

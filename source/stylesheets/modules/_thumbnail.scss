@@ -12,12 +12,13 @@
 //
 // *************************************
 
-.thumbnail
-  background: #fcfdff
-  box-shadow: 2px 2px 0 #170940
-  display: block
-  padding: $thumbnail-padding
-  position: relative
+.thumbnail {
+  background: #fcfdff;
+  box-shadow: 2px 2px 0 #170940;
+  display: block;
+  padding: $thumbnail-padding;
+  position: relative;
+}
 
 // -------------------------------------
 //   Scaffolding
@@ -25,19 +26,21 @@
 
 // ----- Media ----- //
 
-.thumbnail-media
-  animation: 0.4s ease-in-out thumbnail-in
-  left: $thumbnail-padding
-  max-width: calc(100% - #{$thumbnail-padding * 2})
-  position: absolute
-  top: $thumbnail-padding
+.thumbnail-media {
+  animation: 0.4s ease-in-out thumbnail-in;
+  left: $thumbnail-padding;
+  max-width: calc(100% - #{$thumbnail-padding * 2});
+  position: absolute;
+  top: $thumbnail-padding;
+}
 
 // ----- Placeholder ----- //
 
-.thumbnail-placeholder
-  background: #d6dae0
-  border-radius: 1px
-  padding-top: percentage(3/4)
+.thumbnail-placeholder {
+  background: #d6dae0;
+  border-radius: 1px;
+  padding-top: percentage(3 / 4);
+}
 
 // -------------------------------------
 //   Animations
@@ -45,8 +48,12 @@
 
 // ----- In ----- //
 
-@keyframes thumbnail-in
-  from
-    opacity: 0
-  to
-    opacity: 1
+@keyframes thumbnail-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -9,15 +9,16 @@
 //   Extends
 // -------------------------------------
 
-.srt
-  border: 0
-  clip: rect(0 0 0 0)
-  height: 1px
-  margin: -1px
-  overflow: hidden
-  padding: 0
-  position: absolute
-  width: 1px
+.srt {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
 
 // -------------------------------------
 //   Mixins
@@ -31,6 +32,8 @@
 // $media - the media type ('screen', 'print', etc.)
 // @content - the generated content within the mixin
 
-=respond-to($val, $query: min-width, $media: screen)
-  @media #{$media} and ($query: $val)
-    @content
+@mixin respond-to($val, $query: min-width, $media: screen) {
+  @media #{$media} and ($query: $val) {
+    @content;
+  }
+}

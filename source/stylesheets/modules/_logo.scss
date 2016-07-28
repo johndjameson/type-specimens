@@ -13,11 +13,12 @@
 //
 // *************************************
 
-.logo
-  display: inline-block
-  max-width: 100%
-  position: relative
-  text-align: left
+.logo {
+  display: inline-block;
+  max-width: 100%;
+  position: relative;
+  text-align: left;
+}
 
 // -------------------------------------
 //   Scaffolding
@@ -25,13 +26,15 @@
 
 // ----- Tagline ----- //
 
-.logo-tagline
-  color: #c1d3f5
-  font-size: 19px
-  letter-spacing: ( 0.4px / 19px ) * 1em
-  margin-left: 21%  // FIXME: Magic number!
+.logo-tagline {
+  color: #c1d3f5;
+  font-size: 19px;
+  letter-spacing: 0.4px / 19px * 1em;
+  margin-left: 21%;
+}
 
 // ----- SVG ----- //
 
-.logo-svg
-  margin-bottom: -5.5% // FIXME: Magic number!
+.logo-svg {
+  margin-bottom: -5.5%;
+}
