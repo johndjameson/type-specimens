@@ -15,7 +15,7 @@ end
 desc 'Push site to typespecimens.io'
 task :push do
   puts '-- Pushing site up via rsync --'
-  system 'rsync -avz --delete -e ssh ./build/ john@typespecimens.io:typespecimens.io'
+  system 'rsync -avz --delete -e ssh ./build/ root@typespecimens.io:typespecimens.io'
 end
 
 desc 'Build site and push to typespecimens.io'
