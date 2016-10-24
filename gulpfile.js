@@ -9,30 +9,30 @@
 //  Dependencies
 // -------------------------------------
 
-let autoprefixer = require('gulp-autoprefixer')
-let babelify = require('babelify')
-let browserSync = require('browser-sync').create()
-let browserify = require('browserify')
-let buffer = require('vinyl-buffer')
-let cssnano = require('gulp-cssnano')
-let del = require('del')
-let gulp = require('gulp')
-let gulpIf = require('gulp-if')
-let gulpUtil = require('gulp-util')
-let plumber = require('gulp-plumber')
-let runSequence = require('run-sequence')
-let sass = require('gulp-sass')
-let sourceStream = require('vinyl-source-stream')
-let sourcemaps = require('gulp-sourcemaps')
-let uglify = require('gulp-uglify')
-let watchify = require('watchify')
+const autoprefixer = require('gulp-autoprefixer')
+const babelify = require('babelify')
+const browserSync = require('browser-sync').create()
+const browserify = require('browserify')
+const buffer = require('vinyl-buffer')
+const cssnano = require('gulp-cssnano')
+const del = require('del')
+const gulp = require('gulp')
+const gulpIf = require('gulp-if')
+const gulpUtil = require('gulp-util')
+const plumber = require('gulp-plumber')
+const runSequence = require('run-sequence')
+const sass = require('gulp-sass')
+const sourceStream = require('vinyl-source-stream')
+const sourcemaps = require('gulp-sourcemaps')
+const uglify = require('gulp-uglify')
+const watchify = require('watchify')
 
 // -------------------------------------
 //  Configuration
 // -------------------------------------
 
-let isProduction = process.env.NODE_ENV === 'production'
-let isDevelopment = !isProduction
+const isProduction = process.env.NODE_ENV === 'production'
+const isDevelopment = !isProduction
 
 // -------------------------------------
 //  Functions
