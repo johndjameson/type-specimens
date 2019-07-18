@@ -1,9 +1,0 @@
-.sass-cache/
-build/
-node_modules/
-screenshots/
-
-*.log
-*.sublime-workspace
-.DS_Store
-.application.temp.js
