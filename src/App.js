@@ -3,6 +3,8 @@ import { fetchJson } from 'common/helpers'
 import 'sanitize.css'
 import 'sanitize.css/forms.css'
 import 'common/styles/global.css'
+import Specimens from 'components/Specimens'
+import Row from 'common/components/Row'
 
 const recordsUrl =
   'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Slug&filterByFormula=AND(Status=%27Published%27)'
@@ -24,15 +26,9 @@ function App() {
 
   return (
     <header>
-      {specimens.length > 0 &&
-        specimens.map(specimen => (
-          <div key={specimen.id}>
-            <img
-              alt={specimen.fields.Name}
-              src={specimen.fields.Screenshots[0].url}
-            />
-          </div>
-        ))}
+      <Row>
+        <Specimens specimens={specimens} />
+      </Row>
     </header>
   )
 }
