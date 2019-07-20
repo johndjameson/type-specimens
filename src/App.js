@@ -27,7 +27,9 @@ function App() {
 
   return (
     <>
-      <Hero />
+      <Row>
+        <Hero />
+      </Row>
 
       <Row as='main'>
         <Specimens specimens={specimens} />

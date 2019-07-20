@@ -1,2 +1,17 @@
 export const fetchJson = async url =>
   await fetch(url).then(response => response.json())
+
+export const fetchText = async url =>
+  await fetch(url).then(response => response.text())
+
+export function parseSvg(svg) {
+  let parser = new DOMParser()
+
+  let element = parser.parseFromString(svg, 'image/svg+xml')
+
+  let markup = element.children[0].innerHTML
+  let viewBox = element.children[0].getAttribute('viewBox')
+
+  return { markup, viewBox }
+}
+
