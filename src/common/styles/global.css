@@ -4,6 +4,13 @@ body {
   font-family: 'effra', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
+  padding-bottom: 60px;
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    padding-bottom: 90px;
+  }
 }
 
 a {

@@ -39,7 +39,7 @@ export const SpecimenBase = styled.div`
   }
 `
 
-export const Thumbnail = styled.a`
+export const Thumbnail = styled(ExternalLink)`
   --thumbnail-padding: 2px;
   background-color: #fcfdff;
   box-shadow: 2px 2px 0 #170940;
