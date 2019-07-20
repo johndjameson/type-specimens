@@ -5,6 +5,7 @@ import 'sanitize.css/forms.css'
 import 'common/styles/global.css'
 import Specimens from 'components/Specimens'
 import Row from 'common/components/Row'
+import Hero from 'components/Hero'
 
 const recordsUrl =
   'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Slug&filterByFormula=AND(Status=%27Published%27)'
@@ -25,11 +26,13 @@ function App() {
   }, [])
 
   return (
-    <header>
-      <Row>
+    <>
+      <Hero />
+
+      <Row as='main'>
         <Specimens specimens={specimens} />
       </Row>
-    </header>
+    </>
   )
 }
 
