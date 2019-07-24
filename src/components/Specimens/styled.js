@@ -12,32 +12,13 @@ const fadeIn = keyframes`
 `
 
 export const Base = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: -40px;
-  margin-left: -40px;
+  --specimens-gap: 40px;
+  display: grid;
+  grid-column-gap: var(--specimens-gap);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 `
 
-export const SpecimenBase = styled.div`
-  padding-left: 40px;
-  width: 100%;
-
-  @media screen and (min-width: 600px) {
-    width: 50%;
-  }
-
-  @media screen and (min-width: 900px) {
-    width: calc(100% / 3);
-  }
-
-  @media screen and (min-width: 1300px) {
-    width: 25%;
-  }
-
-  @media screen and (min-width: 1700px) {
-    width: 20%;
-  }
-`
+export const SpecimenBase = styled.div``
 
 export const Thumbnail = styled(ExternalLink)`
   --thumbnail-padding: 2px;
@@ -55,6 +36,7 @@ export const Image = styled.img`
   position: absolute;
   top: var(--thumbnail-padding);
   transition: opacity 0.2s ease-in-out;
+  width: 100%;
 
   ${Thumbnail}:hover & {
     opacity: 0.8;
@@ -69,7 +51,7 @@ export const Placeholder = styled.div`
 
 export const Heading = styled.h2`
   font-size: 13px;
-  line-height: 40px;
+  line-height: var(--specimens-gap);
   text-align: center;
 `
 
