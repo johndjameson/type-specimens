@@ -16,13 +16,15 @@ export const Logo = styled.div`
 `
 
 export const Image = styled(InlineSvg)`
-  margin-bottom: -5.5%;
+  margin-bottom: -5%;
+  max-width: 100%;
 `
 
 export const Text = styled.p`
   color: #c1d3f5;
   font-size: 19px;
   letter-spacing: 0.02em;
+  line-height: 1.2;
   margin-left: 21%;
 `
 
