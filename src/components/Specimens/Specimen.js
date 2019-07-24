@@ -12,7 +12,7 @@ import {
 function Specimen({ href, id, imageSrc, name }) {
   return (
     <SpecimenBase key={id}>
-      <Thumbnail href={href} tabindex='-1'>
+      <Thumbnail href={href} tabIndex='-1'>
         <Placeholder />
         <Image alt={name} src={imageSrc} />
       </Thumbnail>
