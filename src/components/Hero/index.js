@@ -1,5 +1,4 @@
 import React from 'react'
-import ExternalLink from 'common/components/ExternalLink'
 import Hidden from 'common/components/Hidden'
 import { Base, Image, Link, Logo, Text } from './styled'
 import logo from './logo-type-specimens.svg'
