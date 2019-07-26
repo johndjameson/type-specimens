@@ -1,24 +1,30 @@
 import React from 'react'
 import Hidden from 'common/components/Hidden'
-import { Base, Image, Link, Logo, Text } from './styled'
 import logo from './logo-type-specimens.svg'
+import * as Styled from './styled'
 
 function Hero({ specimens }) {
   return (
-    <Base>
-      <Logo>
+    <Hero.Base>
+      <Hero.Logo>
         <Hidden as='h1'>Type Specimens</Hidden>
-        <Image height={174} src={logo} width={593} />
+        <Hero.Image height={174} src={logo} width={593} />
 
-        <Text>
+        <Hero.Text>
           Curated from around the web by&nbsp;
-          <Link href='https://johndjameson.com/'>
+          <Hero.Link href='https://johndjameson.com/'>
             John&nbsp;D.&nbsp;Jameson
-          </Link>
-        </Text>
-      </Logo>
-    </Base>
+          </Hero.Link>
+        </Hero.Text>
+      </Hero.Logo>
+    </Hero.Base>
   )
 }
+
+Hero.Base = Styled.Base
+Hero.Image = Styled.Image
+Hero.Link = Styled.Link
+Hero.Logo = Styled.Logo
+Hero.Text = Styled.Text
 
 export default Hero
