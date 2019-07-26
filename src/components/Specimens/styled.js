@@ -50,7 +50,7 @@ export const Placeholder = styled.div`
 `
 
 export const Heading = styled.h2`
-  font-size: 13px;
+  font-size: 12px;
   line-height: var(--specimens-gap);
   text-align: center;
 `

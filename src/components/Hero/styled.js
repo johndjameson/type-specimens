@@ -22,7 +22,7 @@ export const Image = styled(InlineSvg)`
 
 export const Text = styled.p`
   color: #c1d3f5;
-  font-size: 19px;
+  font-size: 18px;
   letter-spacing: 0.02em;
   line-height: 1.2;
   margin-left: 21%;
