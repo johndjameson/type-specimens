@@ -2,35 +2,41 @@
   "name": "type-specimens",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 2 chrome version",
+      "last 2 edge version",
+      "last 2 firefox version",
+      "last 2 safari version"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 2 chrome version",
+      "last 2 edge version",
+      "last 2 firefox version",
+      "last 2 safari version"
     ]
   },
-  "devDependencies": {
+  "scripts": {
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "screenshot": "node scripts/screenshot.js",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
+  },
+  "dependencies": {
     "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
     "sanitize.css": "^11.0.0",
     "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "node-fetch": "^2.6.0",
+    "pageres": "^5.1.0",
+    "sharp": "^0.22.1"
   }
 }
