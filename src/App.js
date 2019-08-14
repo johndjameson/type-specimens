@@ -27,6 +27,9 @@ function App() {
 
   return (
     <>
+    <p>MY COOL APP</p>
+
+
       <Row>
         <Hero />
       </Row>
