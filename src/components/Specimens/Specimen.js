@@ -14,7 +14,7 @@ function Specimen({ href, id, imageSrc, name }) {
     <SpecimenBase key={id}>
       <Thumbnail href={href} tabIndex='-1'>
         <Placeholder />
-        <Image alt={name} loading='lazy' src={imageSrc} />
+        <Image alt={name} src={imageSrc} />
       </Thumbnail>
 
       <Heading>

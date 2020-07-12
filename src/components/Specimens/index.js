@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { imageKitUrl } from 'common/helpers'
 import Specimen from './Specimen'
 import * as Styled from './styled'
 
@@ -10,7 +11,10 @@ function Specimens({ specimens }) {
         <Specimen
           href={fields.URL}
           id={id}
-          imageSrc={fields.Screenshots[0].url}
+          imageSrc={imageKitUrl({
+            path: `${fields.Slug}.jpg`,
+            transformations: { f: 'webp' },
+          })}
           key={id}
           name={fields.Name}
         />

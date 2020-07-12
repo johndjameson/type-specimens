@@ -31,6 +31,7 @@ export const Thumbnail = styled(ExternalLink)`
 
 export const Image = styled.img`
   animation: 0.4s ease-in-out ${fadeIn};
+  height: auto;
   left: var(--thumbnail-padding);
   max-width: calc(100% - (var(--thumbnail-padding) * 2));
   position: absolute;
@@ -42,6 +43,12 @@ export const Image = styled.img`
     opacity: 0.8;
   }
 `
+
+Image.defaultProps = {
+  height: 450,
+  loading: 'lazy',
+  width: 600,
+}
 
 export const Placeholder = styled.div`
   background: #d6dae0;
