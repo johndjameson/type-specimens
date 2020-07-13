@@ -13,7 +13,7 @@ function Specimens({ specimens }) {
           id={id}
           imageSrc={imageKitUrl({
             path: `${fields.Slug}.jpg`,
-            transformations: { f: 'webp' },
+            transformations: { f: 'auto' },
           })}
           key={id}
           name={fields.Name}
