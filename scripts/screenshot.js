@@ -2,10 +2,12 @@ const Pageres = require('pageres')
 const sharp = require('sharp')
 const fetch = require('node-fetch')
 
+const { AIRTABLE_KEY } = process.env
+
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const recordsUrl =
-  'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&filterByFormula=AND(Screenshot)&sortField=Slug'
+  `https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=${AIRTABLE_KEY}&filterByFormula=AND(Screenshot)&sortField=Slug`
 
 const takeScreenshot = async ({
   fields: { URL: url, Delay: delay, Slug: slug },
