@@ -7,8 +7,7 @@ import Specimens from 'components/Specimens'
 import Row from 'common/components/Row'
 import Hero from 'components/Hero'
 
-const recordsUrl =
-  'https://api.airtable.com/v0/apptKHbxmAAcPuZMW/specimens?api_key=key3GGb7zxleGAfHl&sortField=Slug&filterByFormula=AND(Status=%27Published%27)'
+const specimensUrl = '/.netlify/functions/specimens'
 
 function App() {
   const [specimens, setSpecimens] = useState([])
@@ -18,11 +17,11 @@ function App() {
       setSpecimens(s => [...s, ...json.records])
 
       if ('offset' in json) {
-        fetchJson(`${recordsUrl}&offset=${json.offset}`).then(handleResponse)
+        fetchJson(`${specimensUrl}?offset=${json.offset}`).then(handleResponse)
       }
     }
 
-    fetchJson(recordsUrl).then(handleResponse)
+    fetchJson(specimensUrl).then(handleResponse)
   }, [])
 
   return (
