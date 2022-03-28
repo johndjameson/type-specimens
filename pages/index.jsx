@@ -58,9 +58,7 @@ function Home({ specimens }) {
 }
 
 export const getServerSideProps = async () => {
-  const data = await fetchJson(
-    `${process.env.TYPE_SPECIMENS_URL_ORIGIN}/api/specimens`
-  );
+  const data = await fetchJson(`${process.env.VERCEL_URL}/api/specimens`);
 
   return {
     props: {
