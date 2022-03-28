@@ -57,7 +57,7 @@ function Home({ specimens }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const data = await fetchJson(`${process.env.VERCEL_URL}/api/specimens`);
 
   return {
