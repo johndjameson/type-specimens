@@ -23,7 +23,14 @@ function InlineSvg({ alt, height, src, width, ...moreProps }) {
   ) : (
     // Use <img> to start loading during HTML parse, then replace with <svg>
     // eslint-disable-next-line @next/next/no-img-element
-    <img alt={alt} height={height} ref={imgRef} src={src} width={width} />
+    <img
+      alt={alt}
+      height={height}
+      ref={imgRef}
+      src={src}
+      width={width}
+      {...moreProps}
+    />
   );
 }
 
