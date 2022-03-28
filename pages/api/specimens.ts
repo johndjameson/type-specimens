@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { fetchJson } from 'helpers';
 
 type Record = {
   fields: {
@@ -31,18 +32,14 @@ export default async function handler(
   url.searchParams.set('filterByFormula', `AND(Status='Published')`);
   url.searchParams.set('sortField', 'Slug');
 
-  const response = await fetch(url.toString());
-
-  const data = await response.json();
+  const data = await fetchJson(url.toString());
 
   records.push(...data.records.map(subsetFields));
 
   if (data.offset) {
     url.searchParams.set('offset', data.offset);
 
-    const offsetResponse = await fetch(url.toString());
-
-    const offsetData = await offsetResponse.json();
+    const offsetData = await fetchJson(url.toString());
 
     records.push(...offsetData.records.map(subsetFields));
   }
