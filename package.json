@@ -35,7 +35,7 @@
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "pageres": "^5.1.0",
     "sharp": "^0.22.1"
   }
