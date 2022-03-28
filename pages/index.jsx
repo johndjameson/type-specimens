@@ -57,12 +57,39 @@ function Home({ specimens }) {
   );
 }
 
+const subsetFields = (record) => ({
+  id: record.id,
+  name: record.fields.Name,
+  slug: record.fields.Slug,
+  url: record.fields.URL,
+});
+
 export const getStaticProps = async () => {
-  const data = await fetchJson(`${process.env.VERCEL_URL}/api/specimens`);
+  const specimens = [];
+
+  const url = new URL(
+    `https://api.airtable.com/v0/${process.env.AIRTABLE_ID}/specimens`
+  );
+
+  url.searchParams.set('api_key', process.env.AIRTABLE_KEY ?? '');
+  url.searchParams.set('filterByFormula', `AND(Status='Published')`);
+  url.searchParams.set('sortField', 'Slug');
+
+  const data = await fetchJson(url.toString());
+
+  specimens.push(...data.records.map(subsetFields));
+
+  if (data.offset) {
+    url.searchParams.set('offset', data.offset);
+
+    const offsetData = await fetchJson(url.toString());
+
+    specimens.push(...offsetData.records.map(subsetFields));
+  }
 
   return {
     props: {
-      specimens: data,
+      specimens,
     },
   };
 };
