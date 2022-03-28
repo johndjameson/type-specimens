@@ -1,10 +1,15 @@
-import VisuallyHidden from 'components/VisuallyHidden/VisuallyHidden';
+import Head from 'next/head';
 import InlineSvg from 'components/InlineSvg/InlineSvg';
+import VisuallyHidden from 'components/VisuallyHidden/VisuallyHidden';
 import { fetchJson, imageKitUrl } from 'helpers';
 
 function Home({ specimens }) {
   return (
     <>
+      <Head>
+        <title>Type Specimens</title>
+      </Head>
+
       <section className="ts-c-hero">
         <VisuallyHidden as="h1">Type Specimens</VisuallyHidden>
 
