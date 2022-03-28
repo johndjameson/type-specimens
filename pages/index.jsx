@@ -1,4 +1,4 @@
-import Hidden from 'components/Hidden/Hidden';
+import VisuallyHidden from 'components/VisuallyHidden/VisuallyHidden';
 import InlineSvg from 'components/InlineSvg/InlineSvg';
 import { fetchJson, imageKitUrl } from 'helpers';
 
@@ -6,7 +6,7 @@ function Home({ specimens }) {
   return (
     <>
       <section className="ts-c-hero">
-        <Hidden as="h1">Type Specimens</Hidden>
+        <VisuallyHidden as="h1">Type Specimens</VisuallyHidden>
 
         <div className="ts-c-hero__logo">
           <InlineSvg
@@ -26,7 +26,7 @@ function Home({ specimens }) {
       </section>
 
       <section>
-        <Hidden as="h2">Specimens</Hidden>
+        <VisuallyHidden as="h2">Specimens</VisuallyHidden>
 
         <div className="ts-c-gallery">
           {specimens.map(({ id, name, url, slug }) => (
