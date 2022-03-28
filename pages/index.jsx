@@ -1,6 +1,6 @@
 import Hidden from 'components/Hidden/Hidden';
 import InlineSvg from 'components/InlineSvg/InlineSvg';
-import { fetchJson } from 'helpers';
+import { fetchJson, imageKitUrl } from 'helpers';
 
 function Home({ specimens }) {
   return (
@@ -28,13 +28,30 @@ function Home({ specimens }) {
       <section>
         <Hidden as="h2">Specimens</Hidden>
 
-        {specimens.map((specimen) => (
-          <div key={specimen.id} style={{ marginBottom: '40px' }}>
-            <p>{specimen.name}</p>
-            <p>{specimen.slug}</p>
-            <p>{specimen.url}</p>
-          </div>
-        ))}
+        <div className="ts-c-gallery">
+          {specimens.map(({ id, name, url, slug }) => (
+            <div className="ts-c-specimen" key={id}>
+              <a className="ts-c-specimen__thumb" href={url} tabIndex="-1">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  alt={name}
+                  className="ts-c-specimen__img"
+                  height={225}
+                  loading="lazy"
+                  src={imageKitUrl({
+                    path: `${slug}.jpg`,
+                    transformations: { f: 'auto' },
+                  })}
+                  width={300}
+                />
+              </a>
+
+              <a className="ts-c-specimen__link" href={url}>
+                {name}
+              </a>
+            </div>
+          ))}
+        </div>
       </section>
     </>
   );
