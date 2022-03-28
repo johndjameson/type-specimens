@@ -34,7 +34,7 @@ function Home({ specimens }) {
         <VisuallyHidden as="h2">Specimens</VisuallyHidden>
 
         <div className="ts-c-gallery">
-          {specimens.map(({ id, name, url, slug }) => (
+          {specimens.map(({ id, name, url, slug }, index) => (
             <div className="ts-c-specimen" key={id}>
               <a className="ts-c-specimen__thumb" href={url} tabIndex="-1">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -42,7 +42,7 @@ function Home({ specimens }) {
                   alt={name}
                   className="ts-c-specimen__img"
                   height={225}
-                  loading="lazy"
+                  loading={index >= 4 ? 'lazy' : 'eager'} // Prioritize loading first 4 images
                   src={imageKitUrl({
                     path: `${slug}.jpg`,
                     transformations: { f: 'auto' },
