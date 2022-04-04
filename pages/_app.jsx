@@ -13,6 +13,7 @@ function App({ Component, pageProps }) {
 
         <link rel="preconnect" href="https://ik.imagekit.io" />
 
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <meta name="theme-color" content="#2e5094" />
         <meta
           content="A collection of the web’s best typeface specimens. Curated by John D. Jameson"
