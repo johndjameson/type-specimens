@@ -10,7 +10,7 @@ function Home({ specimens }) {
         <title>Type Specimens</title>
       </Head>
 
-      <section className="ts-c-hero">
+      <header className="ts-c-hero">
         <VisuallyHidden as="h1">Type Specimens</VisuallyHidden>
 
         <div className="ts-c-hero__logo">
@@ -28,9 +28,9 @@ function Home({ specimens }) {
             </a>
           </p>
         </div>
-      </section>
+      </header>
 
-      <section>
+      <main>
         <VisuallyHidden as="h2">Specimens</VisuallyHidden>
 
         <div className="ts-c-gallery">
@@ -57,7 +57,7 @@ function Home({ specimens }) {
             </div>
           ))}
         </div>
-      </section>
+      </main>
     </>
   );
 }
