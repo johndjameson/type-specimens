@@ -69,6 +69,14 @@ const subsetFields = (record) => ({
   url: record.fields.URL,
 });
 
+const fetchOptions = {
+  credentials: 'include',
+  headers: {
+    Authorization:
+      `Bearer ${process.env.AIRTABLE_KEY}`,
+  },
+};
+
 export const getStaticProps = async () => {
   const specimens = [];
 
@@ -76,18 +84,17 @@ export const getStaticProps = async () => {
     `https://api.airtable.com/v0/${process.env.AIRTABLE_ID}/specimens`
   );
 
-  url.searchParams.set('api_key', process.env.AIRTABLE_KEY ?? '');
   url.searchParams.set('filterByFormula', `AND(Status='Published')`);
   url.searchParams.set('sortField', 'Slug');
 
-  const data = await fetchJson(url.toString());
+  const data = await fetchJson(url.toString(), fetchOptions);
 
   specimens.push(...data.records.map(subsetFields));
 
   if (data.offset) {
     url.searchParams.set('offset', data.offset);
 
-    const offsetData = await fetchJson(url.toString());
+    const offsetData = await fetchJson(url.toString(), fetchOptions);
 
     specimens.push(...offsetData.records.map(subsetFields));
   }
