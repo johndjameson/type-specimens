@@ -1,8 +1,8 @@
-export const fetchJson = async (url) =>
-  await fetch(url).then((response) => response.json());
+export const fetchJson = async (url, options = {}) =>
+  await fetch(url, options).then((response) => response.json());
 
-export const fetchText = async (url) =>
-  await fetch(url).then((response) => response.text());
+export const fetchText = async (url, options = {}) =>
+  await fetch(url, options).then((response) => response.text());
 
 export const imageKitUrl = ({ path, transformations = {} }) => {
   const entries = Object.entries(transformations);
