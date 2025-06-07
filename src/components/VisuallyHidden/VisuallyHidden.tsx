@@ -1,7 +1,7 @@
 import React from "react";
 
 interface VisuallyHiddenProps {
-  as?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType;
   className?: string;
   children?: React.ReactNode;
 }
