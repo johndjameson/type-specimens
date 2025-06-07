@@ -1,6 +1,6 @@
-import InlineSvg from 'components/InlineSvg/InlineSvg';
-import VisuallyHidden from 'components/VisuallyHidden/VisuallyHidden';
-import { fetchJson, imageKitUrl } from 'helpers';
+import Logo from "../components/Logo/Logo";
+import VisuallyHidden from "../components/VisuallyHidden/VisuallyHidden";
+import { fetchJson, imageKitUrl } from "../helpers";
 
 interface Specimen {
   id: string;
@@ -17,7 +17,7 @@ const subsetFields = (record: any): Specimen => ({
 });
 
 const fetchOptions = {
-  credentials: 'include' as RequestCredentials,
+  credentials: "include" as RequestCredentials,
   headers: {
     Authorization: `Bearer ${process.env.AIRTABLE_KEY}`,
   },
@@ -27,18 +27,18 @@ async function getSpecimens(): Promise<Specimen[]> {
   const specimens: Specimen[] = [];
 
   const url = new URL(
-    `https://api.airtable.com/v0/${process.env.AIRTABLE_ID}/specimens`
+    `https://api.airtable.com/v0/${process.env.AIRTABLE_ID}/specimens`,
   );
 
-  url.searchParams.set('filterByFormula', `AND(Status='Published')`);
-  url.searchParams.set('sortField', 'Slug');
+  url.searchParams.set("filterByFormula", `AND(Status='Published')`);
+  url.searchParams.set("sortField", "Slug");
 
   const data = await fetchJson(url.toString(), fetchOptions);
 
   specimens.push(...data.records.map(subsetFields));
 
   if (data.offset) {
-    url.searchParams.set('offset', data.offset);
+    url.searchParams.set("offset", data.offset);
 
     const offsetData = await fetchJson(url.toString(), fetchOptions);
 
@@ -54,16 +54,12 @@ export default async function Home() {
   return (
     <>
       <header className="ts-c-hero">
-        <VisuallyHidden as="h1" className="">Type Specimens</VisuallyHidden>
+        <VisuallyHidden as="h1" className="">
+          Type Specimens
+        </VisuallyHidden>
 
         <div className="ts-c-hero__logo">
-          <InlineSvg
-            alt="Type Specimens logo"
-            className="ts-c-hero__media"
-            height={174}
-            src={'/logo-type-specimens.svg'}
-            width={593}
-          />
+          <Logo />
 
           <p className="ts-c-hero__text">
             Curated from around the web by&nbsp;
@@ -75,7 +71,9 @@ export default async function Home() {
       </header>
 
       <main>
-        <VisuallyHidden as="h2" className="">Specimens</VisuallyHidden>
+        <VisuallyHidden as="h2" className="">
+          Specimens
+        </VisuallyHidden>
 
         <div className="ts-c-gallery">
           {specimens.map(({ id, name, url, slug }, index) => (
@@ -86,10 +84,10 @@ export default async function Home() {
                   alt={name}
                   className="ts-c-specimen__img"
                   height={225}
-                  loading={index >= 4 ? 'lazy' : 'eager'} // Prioritize loading first 4 images
+                  loading={index >= 4 ? "lazy" : "eager"} // Prioritize loading first 4 images
                   src={imageKitUrl({
                     path: `${slug}.jpg`,
-                    transformations: { f: 'auto' },
+                    transformations: { f: "auto" },
                   })}
                   width={300}
                 />
