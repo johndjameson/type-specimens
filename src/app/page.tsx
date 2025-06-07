@@ -1,4 +1,4 @@
-import InlineSvg from '../components/InlineSvg/InlineSvg';
+import Logo from '../components/Logo/Logo';
 import VisuallyHidden from '../components/VisuallyHidden/VisuallyHidden';
 import { fetchJson, imageKitUrl } from '../helpers';
 
@@ -57,13 +57,7 @@ export default async function Home() {
         <VisuallyHidden as="h1" className="">Type Specimens</VisuallyHidden>
 
         <div className="ts-c-hero__logo">
-          <InlineSvg
-            alt="Type Specimens logo"
-            className="ts-c-hero__media"
-            height={174}
-            src={'/logo-type-specimens.svg'}
-            width={593}
-          />
+          <Logo          />
 
           <p className="ts-c-hero__text">
             Curated from around the web by&nbsp;
