@@ -70,7 +70,7 @@ export default async function Home() {
       <main className="px-container">
         <h2 className="sr-only">Specimens</h2>
 
-        <div className="ts-c-gallery grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-10 gap-y-6">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-10 gap-y-6">
           {specimens.map(({ id, name, url, slug }, index) => (
             <div className="flex flex-col items-center" key={id}>
               <a
