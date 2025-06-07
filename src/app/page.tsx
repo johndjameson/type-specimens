@@ -52,29 +52,28 @@ export default async function Home() {
 
   return (
     <>
-      <header className="ts-c-hero">
+      <header className="px-container flex justify-center py-16">
         <h1 className="sr-only">Type Specimens</h1>
 
-        <div className="ts-c-hero__logo">
-          <Logo />
+        <div className="inline-flex flex-col">
+          <Logo className="mb-[-5%] max-w-full" />
 
-          <p className="ts-c-hero__text">
+          <p className="ml-[21%] text-lg leading-5 tracking-[.015em]">
             Curated from around the web by&nbsp;
-            <a className="ts-c-link" href="https://johndjameson.com/">
+            <a className="underline" href="https://johndjameson.com/">
               John&nbsp;D.&nbsp;Jameson
             </a>
           </p>
         </div>
       </header>
 
-      <main>
+      <main className="px-container">
         <h2 className="sr-only">Specimens</h2>
 
         <div className="ts-c-gallery">
           {specimens.map(({ id, name, url, slug }, index) => (
             <div className="ts-c-specimen" key={id}>
               <a className="ts-c-specimen__thumb" href={url} tabIndex={-1}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt={name}
                   className="ts-c-specimen__img"

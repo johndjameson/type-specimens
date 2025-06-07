@@ -1,11 +1,10 @@
-function Logo() {
+interface LogoProps {
+  className?: string;
+}
+
+function Logo({ className }: LogoProps) {
   return (
-    <svg
-      width="593"
-      height="174"
-      viewBox="0 0 593 174"
-      className="ts-c-hero__media"
-    >
+    <svg width="593" height="174" viewBox="0 0 593 174" className={className}>
       <defs>
         <filter id="svg-logo-type-shadow">
           <feFlood floodColor="var(--color-blue-950)" result="flood"></feFlood>
