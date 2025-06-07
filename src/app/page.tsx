@@ -1,5 +1,4 @@
 import Logo from "../components/Logo/Logo";
-import VisuallyHidden from "../components/VisuallyHidden/VisuallyHidden";
 import { fetchJson, imageKitUrl } from "../helpers";
 
 interface Specimen {
@@ -54,9 +53,7 @@ export default async function Home() {
   return (
     <>
       <header className="ts-c-hero">
-        <VisuallyHidden as="h1" className="">
-          Type Specimens
-        </VisuallyHidden>
+        <h1 className="sr-only">Type Specimens</h1>
 
         <div className="ts-c-hero__logo">
           <Logo />
@@ -71,9 +68,7 @@ export default async function Home() {
       </header>
 
       <main>
-        <VisuallyHidden as="h2" className="">
-          Specimens
-        </VisuallyHidden>
+        <h2 className="sr-only">Specimens</h2>
 
         <div className="ts-c-gallery">
           {specimens.map(({ id, name, url, slug }, index) => (
