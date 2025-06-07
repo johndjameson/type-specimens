@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 
 import 'sanitize.css';
 import 'sanitize.css/typography.css';
-import 'styles/base.css';
+import '../styles/base.css';
 
 export const metadata: Metadata = {
   title: 'Type Specimens',

@@ -1,6 +1,6 @@
-import InlineSvg from 'components/InlineSvg/InlineSvg';
-import VisuallyHidden from 'components/VisuallyHidden/VisuallyHidden';
-import { fetchJson, imageKitUrl } from 'helpers';
+import InlineSvg from '../components/InlineSvg/InlineSvg';
+import VisuallyHidden from '../components/VisuallyHidden/VisuallyHidden';
+import { fetchJson, imageKitUrl } from '../helpers';
 
 interface Specimen {
   id: string;

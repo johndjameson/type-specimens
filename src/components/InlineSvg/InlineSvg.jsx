@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { fetchText, parseSvg } from 'helpers';
+import { fetchText, parseSvg } from '../../helpers';
 
 function InlineSvg({ alt, height, src, width, ...moreProps }) {
   const [svgData, setSvgData] = useState(null);
