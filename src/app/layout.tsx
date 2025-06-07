@@ -29,7 +29,9 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://ik.imagekit.io" />
       </head>
-      <body>{children}</body>
+      <body className="px-container bg-blue-900 pb-14 text-blue-100 md:pb-24">
+        {children}
+      </body>
     </html>
   );
 }

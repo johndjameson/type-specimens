@@ -1,42 +1,14 @@
-/* prettier-ignore */
-:root {
-  --ts-font-family-system: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+@import "tailwindcss";
 
-  --ts-page-gutter: max(24px, 5vw);
-}
-
-:where(body) {
-  background-color: #2e5094;
-  color: #e7ebf5;
-  font-family: var(--ts-font-family-system);
-  font-weight: 400;
-  padding-block-end: 60px;
-}
-
-@media screen and (min-width: 800px) {
-  :where(body) {
-    padding-block-end: 90px;
+@layer theme {
+  :root,
+  :host {
+    --container-padding: max(24px, 5vw);
   }
 }
 
-:where(a) {
-  color: inherit;
-  text-decoration: none;
-}
-
-:where(h1, h2, h3, h4, h5, h6) {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-:where(p) {
-  margin: 0;
-}
-
-:where(img) {
-  height: auto;
-  max-width: 100%;
+@utility px-container {
+  padding-inline: var(--container-padding);
 }
 
 .ts-u-visually-hidden {
@@ -72,7 +44,6 @@
 }
 
 .ts-c-hero__text {
-  color: #c1d3f5;
   font-size: 18px;
   letter-spacing: 0.02em;
   line-height: 1.2;
