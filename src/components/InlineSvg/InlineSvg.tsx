@@ -3,9 +3,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { fetchText, parseSvg } from '../../helpers';
 
-function InlineSvg({ alt, height, src, width, ...moreProps }) {
-  const [svgData, setSvgData] = useState(null);
-  const imgRef = useRef(null);
+interface InlineSvgProps extends React.SVGProps<SVGSVGElement> {
+  alt?: string;
+  height?: string | number;
+  src: string;
+  width?: string | number;
+}
+
+function InlineSvg({ alt = '', height, src, width, ...moreProps }: InlineSvgProps) {
+  const [svgData, setSvgData] = useState<{ attributes: { [key: string]: string }; content: string } | null>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     fetchText(src).then((text) => {
@@ -35,9 +42,5 @@ function InlineSvg({ alt, height, src, width, ...moreProps }) {
     />
   );
 }
-
-InlineSvg.defaultProps = {
-  alt: '',
-};
 
 export default InlineSvg;
