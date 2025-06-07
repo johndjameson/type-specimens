@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 
-import "sanitize.css";
-import "sanitize.css/typography.css";
 import "../styles/base.css";
 
 export const metadata: Metadata = {
@@ -29,7 +27,9 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://ik.imagekit.io" />
       </head>
-      <body>{children}</body>
+      <body className="bg-blue-900 pb-14 text-blue-100 underline-offset-4 md:pb-24">
+        {children}
+      </body>
     </html>
   );
 }
