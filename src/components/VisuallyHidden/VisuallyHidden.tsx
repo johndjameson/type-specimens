@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface VisuallyHiddenProps {
   as?: keyof JSX.IntrinsicElements;
@@ -6,7 +6,11 @@ interface VisuallyHiddenProps {
   children?: React.ReactNode;
 }
 
-function VisuallyHidden({ as: Tag = 'span', className = '', ...moreProps }: VisuallyHiddenProps) {
+function VisuallyHidden({
+  as: Tag = "span",
+  className = "",
+  ...moreProps
+}: VisuallyHiddenProps) {
   return <Tag className={`ts-u-visually-hidden ${className}`} {...moreProps} />;
 }
 
