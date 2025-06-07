@@ -9,10 +9,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
     "next": "^15.3.3",
+    "postcss": "^8.5.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "sanitize.css": "^13.0.0"
+    "sanitize.css": "^13.0.0",
+    "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
     "@types/node": "^22.15.30",
