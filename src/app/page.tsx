@@ -70,13 +70,17 @@ export default async function Home() {
       <main className="px-container">
         <h2 className="sr-only">Specimens</h2>
 
-        <div className="ts-c-gallery">
+        <div className="ts-c-gallery grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-10 gap-y-6">
           {specimens.map(({ id, name, url, slug }, index) => (
-            <div className="ts-c-specimen" key={id}>
-              <a className="ts-c-specimen__thumb" href={url} tabIndex={-1}>
+            <div className="flex flex-col items-center" key={id}>
+              <a
+                className="mb-2 block bg-slate-50 p-0.5 shadow shadow-slate-950"
+                href={url}
+                tabIndex={-1}
+              >
                 <img
                   alt={name}
-                  className="ts-c-specimen__img"
+                  className="w-full"
                   height={225}
                   loading={index >= 4 ? "lazy" : "eager"} // Prioritize loading first 4 images
                   src={imageKitUrl({
@@ -87,7 +91,7 @@ export default async function Home() {
                 />
               </a>
 
-              <a className="ts-c-specimen__link" href={url}>
+              <a className="block text-xs" href={url}>
                 {name}
               </a>
             </div>

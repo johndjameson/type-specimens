@@ -46,7 +46,7 @@ function Logo({ className }: LogoProps) {
         </filter>
       </defs>
 
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path
           filter="url(#svg-logo-type-shadow)"
           className="logo-type"
