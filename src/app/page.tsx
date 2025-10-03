@@ -32,19 +32,24 @@ async function getSpecimens(): Promise<Specimen[]> {
   url.searchParams.set("filterByFormula", `AND(Status='Published')`);
   url.searchParams.set("sortField", "Slug");
 
-  const data = await fetchJson(url.toString(), fetchOptions);
+  try {
+    const data = await fetchJson(url.toString(), fetchOptions);
 
-  specimens.push(...data.records.map(subsetFields));
+    specimens.push(...data.records.map(subsetFields));
 
-  if (data.offset) {
-    url.searchParams.set("offset", data.offset);
+    if (data.offset) {
+      url.searchParams.set("offset", data.offset);
 
-    const offsetData = await fetchJson(url.toString(), fetchOptions);
+      const offsetData = await fetchJson(url.toString(), fetchOptions);
 
-    specimens.push(...offsetData.records.map(subsetFields));
+      specimens.push(...offsetData.records.map(subsetFields));
+    }
+
+    return specimens;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
-
-  return specimens;
 }
 
 export default async function Home() {
