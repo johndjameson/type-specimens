@@ -8,13 +8,9 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-/.open-next/
-
 # production
 /build
+/public/styles.css
 
 # misc
 .DS_Store
@@ -29,8 +25,8 @@ yarn-error.log*
 # local env files
 .env*.local
 
-# vercel
-.vercel
+# cloudflare
+.wrangler
 
 # typescript
 *.tsbuildinfo

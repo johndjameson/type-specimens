@@ -4,7 +4,7 @@ interface LogoProps {
 
 function Logo({ className }: LogoProps) {
   return (
-    <svg width="593" height="174" viewBox="0 0 593 174" className={className}>
+    <svg width="593" height="174" viewBox="0 0 593 174" class={className}>
       <defs>
         <filter id="svg-logo-type-shadow">
           <feFlood floodColor="var(--color-blue-950)" result="flood"></feFlood>

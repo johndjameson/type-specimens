@@ -1,10 +1,10 @@
 {
-  "main": ".open-next/worker.js",
+  "main": "src/index.tsx",
   "name": "typespecimens",
   "compatibility_date": "2025-03-25",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "directory": ".open-next/assets",
+    "directory": "./public",
     "binding": "ASSETS",
   },
 }
