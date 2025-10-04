@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import Logo from "./components/Logo/Logo";
-import { fetchJson, imageKitUrl } from "./helpers";
+import { fetchJson } from "./helpers";
 
 type Bindings = {
   AIRTABLE_ID: string;
@@ -117,12 +117,10 @@ app.get("/", async (context) => {
                   <img
                     alt={name}
                     class="w-full"
+                    decoding="async"
                     height={225}
                     loading={index >= 4 ? "lazy" : "eager"}
-                    src={imageKitUrl({
-                      path: `${slug}.jpg`,
-                      transformations: { f: "auto" },
-                    })}
+                    src={`https://jdj.land/cdn-cgi/image/format=auto,height=225,width=300,dpr=2/type-specimens/${slug}.png`}
                     width={300}
                   />
                 </a>
