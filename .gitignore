@@ -11,6 +11,7 @@
 # production
 /build
 /public/styles.css
+/screenshots
 
 # misc
 .DS_Store
