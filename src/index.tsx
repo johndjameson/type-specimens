@@ -84,7 +84,7 @@ app.get("/", async (context) => {
           content="A collection of the web's best typeface specimens. Curated by John D. Jameson"
         />
         <link rel="icon" href="/favicon.svg" />
-        <link rel="preconnect" href="https://ik.imagekit.io" />
+        <link rel="preconnect" href="https://jdj.land" />
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body class="bg-blue-900 pb-14 text-blue-100 underline-offset-4 md:pb-24">
