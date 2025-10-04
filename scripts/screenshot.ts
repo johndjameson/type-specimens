@@ -18,7 +18,7 @@ const takeScreenshot = async (url: string, outputPath: string) => {
 
   console.log("waitForLoadState");
   await page.waitForLoadState("networkidle", {
-    timeout: 5000,
+    timeout: 15000,
   });
 
   // console.log(`timeout`);
@@ -134,7 +134,7 @@ for (const [slug, url] of sites) {
   console.log({ slug, url });
 
   try {
-    await takeScreenshot(url, `screenshots/bottom/${slug}.png`);
+    await takeScreenshot(url, `screenshots/${slug}.png`);
   } catch (error) {
     console.error(error);
   }
